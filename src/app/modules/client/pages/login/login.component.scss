@@ -1,0 +1,31 @@
+
+
+.login__main_container {
+
+  .login__container {
+    padding: 100px 20px 20px;
+
+    .form__container {
+      box-shadow: 0 2px 2px 0 RGB(43 80 237 / 20%);
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #fafafa;
+
+      .form_label__container {
+        margin-bottom: 20px;
+      }
+
+      form {
+        width: 100%;
+        display: grid;
+        grid-gap: 20px;
+
+        input, button {
+          width: 100%;
+          border-radius: 8px;
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+}
