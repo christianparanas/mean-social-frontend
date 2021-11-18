@@ -1,15 +1,41 @@
 <div class="login__main_container">
   <div class="login__container">
-
     <div class="form__container p-shadow-1">
       <div class="form_label__container">
         <h2>Login</h2>
       </div>
 
       <form action="" class="">
-        <input type="text" pInputText placeholder="Username or Email address" />
-        <input type="password" pInputText placeholder="Password" />
-        <button pButton type="button" label="Login" ></button>
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input id="email" type="email" pInputText />
+        </div>
+        <div class="p-field">
+          <label for="password">Password</label>
+          <input id="password" type="password" pInputText />
+          <small><span>Forgot your password?</span></small>
+        </div>
+        <button pButton type="button" label="Login"></button>
+
+        <small align="center"
+          >Don't have an account yet?
+          <span [ngStyle]="{ color: 'var(--primary-color)' }"
+            >Sign Up</span
+          ></small
+        >
+
+        <p-divider align="center" layout="horizontal">
+          <span>OR</span>
+        </p-divider>
+
+        <div class="social_login_btn__container">
+          <button
+            pButton
+            type="button"
+            label="Login with Google"
+            icon="pi pi-google"
+          ></button>
+        </div>
       </form>
     </div>
   </div>

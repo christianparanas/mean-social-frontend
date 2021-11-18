@@ -1,7 +1,4 @@
-
-
 .login__main_container {
-
   .login__container {
     padding: 100px 20px 20px;
 
@@ -20,10 +17,38 @@
         display: grid;
         grid-gap: 20px;
 
-        input, button {
+        .p-field {
+          display: grid;
+          grid-gap: 5px;
+
+          small {
+            display: flex;
+            justify-content: flex-end;
+
+            span {
+              cursor: pointer;
+            }
+          }
+        }
+
+        input,
+        button {
           width: 100%;
           border-radius: 8px;
           padding: 10px 15px;
+        }
+
+        small {
+          span {
+            cursor: pointer;
+          }
+        }
+
+        .social_login_btn__container {
+          button {
+            background: white;
+            color: var(--primary-color);
+          }
         }
       }
     }
