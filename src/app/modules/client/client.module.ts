@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
+import { FormsModule } from "@angular/forms";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 // import custom module/s
 import { PrimengModule } from '../primeng/primeng.module'
@@ -20,7 +23,9 @@ import { RegisterComponent } from './pages/register/register.component';
   imports: [
     CommonModule,
     ClientRoutingModule,
-    PrimengModule
+    FormsModule,
+    PrimengModule,
+    BrowserAnimationsModule
   ]
 })
 export class ClientModule { }

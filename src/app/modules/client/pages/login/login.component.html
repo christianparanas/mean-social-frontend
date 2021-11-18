@@ -8,18 +8,18 @@
       <form action="" class="">
         <div class="p-field">
           <label for="email">Email</label>
-          <input id="email" type="email" pInputText />
+          <input id="email" type="email" placeholder="Enter your email" pInputText />
         </div>
         <div class="p-field">
           <label for="password">Password</label>
-          <input id="password" type="password" pInputText />
+          <input id="password" type="password" placeholder="Enter your password" pInputText />
           <small><span>Forgot your password?</span></small>
         </div>
         <button pButton type="button" label="Login"></button>
 
         <small align="center"
           >Don't have an account yet?
-          <span [ngStyle]="{ color: 'var(--primary-color)' }"
+          <span [ngStyle]="{ color: 'var(--primary-color)' }" routerLink="/register"
             >Sign Up</span
           ></small
         >

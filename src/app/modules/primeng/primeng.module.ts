@@ -4,10 +4,18 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { PasswordModule } from 'primeng/password';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule],
-  exports: [InputTextModule, ButtonModule, DividerModule],
+  exports: [
+    InputTextModule,
+    ButtonModule,
+    DividerModule,
+    PasswordModule,
+    InputMaskModule,
+  ],
 })
 export class PrimengModule {}
