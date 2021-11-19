@@ -18,11 +18,15 @@
 .dark-mode {
   --background-color: #2d3436;
   --color: #dfe6e9;
+  --border-color: #2d3436;
+  --shadow: 0;
 }
 
 .light-mode {
   --background-color: #fff;
   --color: #2d3436;
+  --border-color: #fafafa;
+  --shadow: 0 2px 2px 0 RGB(43 80 237 / 20%);
 }
 
 body {

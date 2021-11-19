@@ -3,10 +3,10 @@
     padding: 80px 20px 20px;
 
     .form__container {
-      box-shadow: 0 2px 2px 0 RGB(43 80 237 / 20%);
+      box-shadow: var(--shadow);
       padding: 20px;
       border-radius: 8px;
-      border: 2px solid #fafafa;
+      border: 2px solid var(--border-color);
 
       .form_label__container {
         margin-bottom: 20px;
@@ -23,6 +23,11 @@
 
           label {
             font-size: 12px;
+          }
+
+          input {
+            background-color: var(--background-color);
+            color: var(--color);
           }
         }
 
