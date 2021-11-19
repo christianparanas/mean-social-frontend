@@ -1,4 +1,9 @@
 .nav__main_container {
+  position: fixed;
+  width: 100%;
+  background-color: var(--background-color);
+  z-index: 100;
+
   .nav__container {
     .navigation_btns__container {
       .top__container {
