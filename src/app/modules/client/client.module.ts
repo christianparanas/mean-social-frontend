@@ -14,6 +14,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { AccountComponent } from './pages/account/account.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { NavComponent } from './components/nav/nav.component';
     RegisterComponent,
     HomeComponent,
     NavComponent,
+    NotificationsComponent,
+    AccountComponent,
     
   ],
   imports: [

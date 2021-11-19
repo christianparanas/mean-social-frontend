@@ -15,12 +15,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
-body.dark-mode {
-  background-color: #2d3436;
-  color: #dfe6e9;
+.dark-mode {
+  --background-color: #2d3436;
+  --color: #dfe6e9;
 }
 
-body.light-mode {
-  background-color: #fff;
-  color: #2d3436;
+.light-mode {
+  --background-color: #fff;
+  --color: #2d3436;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--color);
 }

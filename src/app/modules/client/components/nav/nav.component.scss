@@ -1,9 +1,6 @@
 .nav__main_container {
-
   .nav__container {
-
     .navigation_btns__container {
-
       .top__container {
         padding: 10px 15px;
         display: flex;
@@ -17,8 +14,10 @@
 
           i {
             font-size: 20px;
-            padding: 5px;
+            padding: 8px;
             cursor: pointer;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
           }
         }
       }
@@ -26,18 +25,26 @@
       .bottom__container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        border-bottom: 1px solid #566468;
 
         .container {
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          
+
           i {
-            padding: 10px;
+            padding: 12px;
+            font-size: 20px;
           }
         }
       }
+    }
+
+    ::ng-deep .sidebar.p-sidebar {
+      width: 250px;
+      color: var(--color);
+      background-color: var(--background-color);
     }
   }
 }

@@ -19,10 +19,14 @@
         <div class="container">
           <i class="pi pi-bell"></i>
         </div>
-        <div class="container">
+        <div class="container" (click)="sidebarOpen = true">
           <i class="pi pi-bars"></i>
         </div>
       </div>
     </div>
+
+    <p-sidebar styleClass="sidebar" [(visible)]="sidebarOpen" position="right">
+      Content
+    </p-sidebar>
   </div>
 </div>
