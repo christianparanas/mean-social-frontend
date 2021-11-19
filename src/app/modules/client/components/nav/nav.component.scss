@@ -30,7 +30,7 @@
       .bottom__container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        border-bottom: 1px solid #566468;
+        border-bottom: 1px solid var(--borderColor);
 
         .container {
           display: flex;
