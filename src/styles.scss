@@ -3,6 +3,8 @@
 @import "../node_modules/primeng/resources/themes/bootstrap4-light-purple/theme.css";
 @import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.css";
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -11,4 +13,14 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+body.dark-mode {
+  background-color: #2d3436;
+  color: #dfe6e9;
+}
+
+body.light-mode {
+  background-color: #fff;
+  color: #2d3436;
 }

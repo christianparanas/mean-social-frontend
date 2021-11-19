@@ -1,5 +1,5 @@
-.login__main_container {
-  .login__container {
+.register__main_container {
+  .register__container {
     padding: 80px 20px 20px;
 
     .form__container {
@@ -20,13 +20,18 @@
         .p-field {
           display: grid;
           grid-gap: 5px;
+
+          label {
+            font-size: 12px;
+          }
         }
 
         input,
         button {
+          font-size: 14px;
           width: 100%;
           border-radius: 8px;
-          padding: 10px 15px;
+          padding: 12px 15px;
         }
 
         small {

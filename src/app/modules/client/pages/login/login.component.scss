@@ -21,21 +21,27 @@
           display: grid;
           grid-gap: 5px;
 
+          label {
+            font-size: 12px;
+          }
+
           small {
             display: flex;
             justify-content: flex-end;
 
             span {
               cursor: pointer;
+              font-size: 12px;
             }
           }
         }
 
         input,
         button {
+          font-size: 14px;
           width: 100%;
           border-radius: 8px;
-          padding: 10px 15px;
+          padding: 12px 15px;
         }
 
         small {

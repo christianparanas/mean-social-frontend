@@ -1,0 +1,43 @@
+.nav__main_container {
+
+  .nav__container {
+
+    .navigation_btns__container {
+
+      .top__container {
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .btns__container {
+          display: grid;
+          grid-gap: 5px;
+          grid-template-columns: 1fr 1fr;
+
+          i {
+            font-size: 20px;
+            padding: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .bottom__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          
+          i {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
