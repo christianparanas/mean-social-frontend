@@ -22,6 +22,7 @@
   --shadow: 0;
   --inputBgColor: #242829;
   --inputBorderColor: #242829;
+  --postBgColor: #2d3436;
 }
 
 .light-mode {
@@ -31,6 +32,7 @@
   --shadow: 0 2px 2px 0 RGB(43 80 237 / 20%);
   --inputBgColor: #fff;
   --inputBorderColor: #ced4da;
+  --postBgColor: #fff;
 }
 
 body {
