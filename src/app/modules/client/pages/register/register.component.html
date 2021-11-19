@@ -8,23 +8,51 @@
 
       <form action="" class="">
         <div class="p-field">
-          <label for="name">Name</label>
-          <input id="name" type="text" pInputText />
+          <input
+            id="name"
+            type="text"
+            pInputText
+            placeholder="Enter your name"
+          />
         </div>
 
         <div class="p-field">
-          <label for="email">Email</label>
-          <input id="email" type="email" pInputText />
+          <input
+            id="email"
+            type="email"
+            pInputText
+            placeholder="Enter your email"
+          />
         </div>
         <div class="p-field">
-          <label for="password">Password</label>
-          <input id="password" type="password" pInputText />
+          <p-password
+            class="pass"
+            [(ngModel)]="pass1"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Enter your password"
+          >
+            <ng-template pTemplate="header">
+              <h6>Pick a password</h6>
+            </ng-template>
+            <ng-template pTemplate="footer">
+              <p-divider></p-divider>
+              <p class="p-mt-2">Suggestions</p>
+              <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                <li>At least one lowercase</li>
+                <li>At least one uppercase</li>
+                <li>At least one numeric</li>
+                <li>Minimum 8 characters</li>
+              </ul>
+            </ng-template>
+          </p-password>
         </div>
         <button pButton type="button" label="Sign Up"></button>
 
         <small align="center"
           >Already have an account?
-          <span [ngStyle]="{ color: 'var(--primary-color)' }" routerLink="/login"
+          <span
+            [ngStyle]="{ color: 'var(--primary-color)' }"
+            routerLink="/login"
             >Login</span
           ></small
         >

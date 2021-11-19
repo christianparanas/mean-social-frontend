@@ -3,10 +3,8 @@
     padding: 80px 20px 20px;
 
     .form__container {
-      box-shadow: var(--shadow);
       padding: 20px;
       border-radius: 8px;
-      border: 1px solid var(--border-color);
 
       .form_label__container {
         margin-bottom: 20px;
@@ -21,17 +19,14 @@
           display: grid;
           grid-gap: 5px;
 
-          label {
-            font-size: 12px;
-          }
-
           input {
-            background-color: var(--background-color);
+            background-color: var(--inputBgColor);
             color: var(--color);
-            border-color: var(--border-color);
+            border-color: var(--inputBorderColor);
           }
 
           small {
+            margin-top: 5px;
             display: flex;
             justify-content: flex-end;
 
