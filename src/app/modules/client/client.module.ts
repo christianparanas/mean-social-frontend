@@ -16,6 +16,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { AccountComponent } from './pages/account/account.component';
+import { PostcontainerComponent } from './components/postcontainer/postcontainer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AccountComponent } from './pages/account/account.component';
     NavComponent,
     NotificationsComponent,
     AccountComponent,
+    PostcontainerComponent,
     
   ],
   imports: [
