@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MenuItem } from 'primeng/api';
+
 @Component({
   selector: 'app-postcontainer',
   templateUrl: './postcontainer.component.html',
-  styleUrls: ['./postcontainer.component.scss']
+  styleUrls: ['./postcontainer.component.scss'],
 })
 export class PostcontainerComponent implements OnInit {
+  items: MenuItem[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Edit Post',
+        icon: 'pi pi-fw pi-pencil',
+      },
+      {
+        label: 'Edit Privacy',
+        icon: 'pi pi-fw pi-lock',
+      },
+      {
+        label: 'Hide Post',
+        icon: 'pi pi-fw pi-times-circle',
+      },
+    ];
   }
-
 }

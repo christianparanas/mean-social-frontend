@@ -15,28 +15,29 @@
 }
 
 .dark-mode {
-  --background-color: #2d3436;
-  --color: #dfe6e9;
-  --border-color: #575f67;
-  --shadow: 0;
-  --inputBgColor: #242829;
-  --inputBorderColor: #242829;
-  --postBgColor: #2d3436;
-  --borderColor: #242829;
+  --pageBgColor: #242829;
+
+  --primaryBgColor: #2d3436;
+  --secondaryBgColor: #242829;
+
+  --primaryColor: #fff;
+  --secondaryColor: #e3e3e3;
+  --borderColor: #2d3436;
+
 }
 
 .light-mode {
-  --background-color: #fff;
-  --color: #2d3436;
-  --border-color: #ced4da;
-  --shadow: 0 2px 2px 0 RGB(43 80 237 / 20%);
-  --inputBgColor: #fff;
-  --inputBorderColor: #ced4da;
-  --postBgColor: #fff;
+  --pageBgColor: #fff;
+
+  --primaryBgColor: #fff;
+  --secondaryBgColor: #fafafa;
+
+  --primaryColor: #2d3436;
+  --secondaryColor: #9a9a9b;
   --borderColor: #e3e3e3;
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--pageBgColor);
   color: var(--color);
 }

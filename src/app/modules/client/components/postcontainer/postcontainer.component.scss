@@ -1,6 +1,8 @@
 
 .postcontainer__main_container {
-  background: var(--postBgColor);
+  background: var(--primaryBgColor);
+  color: var(--primaryColor);
+  
   border-bottom: 1px solid var(--borderColor);
   border-top: 1px solid var(--borderColor);
 
@@ -31,10 +33,25 @@
         .post_dateposted_privacy__container {
           display: flex;
           font-size: 12px;
-          color: #ccc4c4;
+          color: var(--postContainerSecondaryColor);
 
           .dateposted__wrapper {
             margin-right: 5px;
+          }
+        }
+      }
+
+      ::ng-deep .p-tieredmenu {
+        background-color: var(--primaryBgColor);
+        
+        .p-menuitem-link {
+          .p-menuitem-icon, .p-menuitem-text {
+            color: var(--color);
+          }
+
+          &:hover {
+            background-color: var(--secondaryBgColor);
+
           }
         }
       }

@@ -1,6 +1,7 @@
 .login__main_container {
   .login__container {
     padding: 80px 20px 20px;
+    color: var(--primaryColor);
 
     .form__container {
       border-radius: 8px;
@@ -19,9 +20,9 @@
           grid-gap: 5px;
 
           input {
-            background-color: var(--inputBgColor);
-            color: var(--color);
-            border-color: var(--inputBorderColor);
+            background-color: var(--primaryBgColor);
+            border-color: var(--borderColor);
+            color: var(--primaryColor);
           }
 
           ::placeholder {
@@ -51,13 +52,6 @@
         small {
           span {
             cursor: pointer;
-          }
-        }
-
-        .social_login_btn__container {
-          button {
-            background: var(--secondary-color);
-            color: var(--primary-color);
           }
         }
       }

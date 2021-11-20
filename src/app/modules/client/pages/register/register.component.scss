@@ -1,6 +1,7 @@
 .register__main_container {
   .register__container {
     padding: 80px 20px 20px;
+    color: var(--primaryColor);
 
     .form__container {
       border-radius: 8px;
@@ -19,9 +20,9 @@
           grid-gap: 5px;
 
           input {
-            background-color: var(--inputBgColor);
-            color: var(--color);
-            border-color: var(--inputBorderColor);
+            background-color: var(--primaryBgColor);
+            border-color: var(--borderColor);
+            color: var(--primaryColor);
           }
 
           ::placeholder {
@@ -39,9 +40,12 @@
               }
 
               input {
-                background-color: var(--inputBgColor);
-                color: var(--color);
-                border-color: var(--inputBorderColor);
+                background-color: var(--primaryBgColor);
+                border-color: var(--borderColor);
+                color: var(--primaryColor);
+                font-size: 14px;
+                border-radius: 8px;
+                padding: 12px 15px;
               }
 
               ::placeholder {
@@ -50,8 +54,8 @@
             }
 
             .p-password-panel {
-              color: var(--color);
-              background-color: var(--inputBgColor);
+              color: var(--primaryColor);
+              background-color: var(--primaryBgColor);
             }
 
             .p-password-info {

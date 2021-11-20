@@ -15,7 +15,8 @@
           </div>
         </div>
       </div>
-      <i class="fal fa-ellipsis-h"></i>
+      <p-tieredMenu class="postmenu" #menu [model]="items" [popup]="true"></p-tieredMenu>
+      <i (click)="menu.toggle($event)" class="fal fa-ellipsis-h"></i>
     </div>
   </div>
 
