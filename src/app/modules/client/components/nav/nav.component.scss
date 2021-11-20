@@ -33,18 +33,30 @@
       .bottom__container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        border-bottom: 1px solid var(--borderColor);
 
         .container {
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          transition: all .3s ease-in-out;
+          border-bottom: 1px solid var(--borderColor);
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
 
           i {
             padding: 12px;
             font-size: 20px;
           }
+
+          &:hover {
+            background-color: var(--secondaryBgColor);
+          }
+        }
+
+        .currentRoute {
+          color: var(--primary-color);
+          border-bottom: 1px solid var(--primary-color);
         }
       }
     }

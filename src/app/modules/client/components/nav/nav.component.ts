@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +8,8 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavComponent implements OnInit {
   sidebarOpen = false;
+
+  @Input() currentRoute: string;
 
   constructor() {}
 

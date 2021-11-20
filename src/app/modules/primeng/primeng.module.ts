@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { InputMaskModule } from 'primeng/inputmask';
 import { SidebarModule } from 'primeng/sidebar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
     InputMaskModule,
     SidebarModule,
     TieredMenuModule,
+    SkeletonModule,
   ],
 })
 export class PrimengModule {}

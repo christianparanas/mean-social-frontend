@@ -10,13 +10,25 @@
       </div>
 
       <div class="bottom__container">
-        <div class="container" routerLink="/">
+        <div
+          class="container"
+          [ngClass]="{ currentRoute: currentRoute === 'home' }"
+          routerLink="/"
+        >
           <i class="fal fa-home"></i>
         </div>
-        <div class="container" routerLink="/friends">
+        <div
+          class="container"
+          [ngClass]="{ currentRoute: currentRoute === 'friends' }"
+          routerLink="/friends"
+        >
           <i class="pi pi-users"></i>
         </div>
-        <div class="container" routerLink="/notifications">
+        <div
+          class="container"
+          [ngClass]="{ currentRoute: currentRoute === 'notifications' }"
+          routerLink="/notifications"
+        >
           <i class="pi pi-bell"></i>
         </div>
         <div class="container" (click)="sidebarOpen = true">
