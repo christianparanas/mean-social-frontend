@@ -1,11 +1,13 @@
 .nav__main_container {
-  position: fixed;
   width: 100%;
-  background-color: var(--background-color);
-  z-index: 100;
 
   .nav__container {
     .navigation_btns__container {
+      z-index: 100;
+      position: fixed;
+      width: 100%;
+      background-color: var(--background-color);
+
       .top__container {
         padding: 10px 15px;
         display: flex;
@@ -47,6 +49,7 @@
     }
 
     ::ng-deep .sidebar.p-sidebar {
+      z-index: 101;
       width: 250px;
       color: var(--color);
       background-color: var(--background-color);
