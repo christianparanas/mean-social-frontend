@@ -17,6 +17,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { AccountComponent } from './pages/account/account.component';
 import { PostcontainerComponent } from './components/postcontainer/postcontainer.component';
+import { FriendsComponent } from './pages/friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PostcontainerComponent } from './components/postcontainer/postcontainer
     NotificationsComponent,
     AccountComponent,
     PostcontainerComponent,
+    FriendsComponent,
     
   ],
   imports: [
