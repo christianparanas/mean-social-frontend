@@ -38,7 +38,15 @@
     </div>
 
     <p-sidebar styleClass="sidebar" [(visible)]="sidebarOpen" position="right">
-      Content
+      <div class="sidebar_content__container">
+        <div class="profilelink__container" routerLink="/account">
+          <img src="../../../../../assets/images/chan.jpg" alt="">
+          <div class="details">
+            <h5>Christian Paranas</h5>
+            <p>See your profile</p>
+          </div>
+        </div>
+      </div>
     </p-sidebar>
   </div>
 </div>

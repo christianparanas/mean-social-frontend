@@ -7,10 +7,12 @@ import { FriendsComponent } from './pages/friends/friends.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'friends', component: FriendsComponent },
+  { path: 'account', component: AccountComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
