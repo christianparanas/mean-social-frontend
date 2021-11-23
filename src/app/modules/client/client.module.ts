@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import custom module/s
@@ -39,6 +40,7 @@ import { FriendsComponent } from './pages/friends/friends.component';
     PrimengModule,
     CoreModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
 })
 export class ClientModule {}

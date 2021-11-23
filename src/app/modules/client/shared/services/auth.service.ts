@@ -14,8 +14,8 @@ const baseUrl = environment.baseURL;
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  register(data: any): Observable<any> {
-    return this.http.post(`${baseUrl}/api/auth/register`, data);
+  register(data: any) {
+    return this.http.post(`${baseUrl}/api/users/register`, data);
   }
 
   login(data: any): Observable<any> {

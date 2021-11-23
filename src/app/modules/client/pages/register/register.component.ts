@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+// services
+import { AuthService } from '../../shared/services/auth.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,8 +12,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  formSubmitLoading = false
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     this.initializeForm()
   }
 
@@ -27,6 +31,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registerForm)
+    if(this.registerForm.status == "INVALID") return
+
+    this.formSubmitLoading = true
+    console.log(this.registerForm.value)
+
+    this.authService.register(this.registerForm.value).subscribe(
+      (response: any) => {
+        console.log(response.message)
+      },
+      (error) => console.log(error)
+    )
   }
 }
