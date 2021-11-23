@@ -6,14 +6,18 @@
         <h2>Sign Up</h2>
       </div>
 
-      <form action="" class="">
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" #ngForm="ngForm">
         <div class="p-field">
           <input
             id="name"
             type="text"
             pInputText
             placeholder="Enter your name"
+            formControlName="name"
           />
+          <small *ngIf="registerForm.value.name == '' && ngForm.submitted" class="p-error"
+            >This field is required.</small
+          >
         </div>
 
         <div class="p-field">
@@ -22,13 +26,25 @@
             type="email"
             pInputText
             placeholder="Enter your email"
+            formControlName="email"
           />
+          <small
+            id="email"
+            *ngIf="
+              registerForm.controls.email.status == 'INVALID' &&
+              registerForm.value.email != ''
+            "
+            class="p-error"
+            >Please enter valid email.</small
+          >
+          <small *ngIf="registerForm.value.email == '' && ngForm.submitted" class="p-error"
+            >This field is required.</small
+          >
         </div>
         <div class="p-field">
           <p-password
             class="pass"
-            [(ngModel)]="pass1"
-            [ngModelOptions]="{ standalone: true }"
+            formControlName="password"
             placeholder="Enter your password"
           >
             <ng-template pTemplate="header">
@@ -45,8 +61,11 @@
               </ul>
             </ng-template>
           </p-password>
+          <small *ngIf="registerForm.value.password == '' && ngForm.submitted" class="p-error "
+            >This field is required.</small
+          >
         </div>
-        <button pButton type="button" label="Sign Up"></button>
+        <button pButton type="submit" label="Sign Up"></button>
 
         <small align="center"
           >Already have an account?

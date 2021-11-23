@@ -46,7 +46,7 @@
         
         .p-menuitem-link {
           .p-menuitem-icon, .p-menuitem-text {
-            color: var(--color);
+            color: var(--primaryColor);
           }
 
           &:hover {
@@ -120,7 +120,6 @@
         }
       }
     }
-
 
     .bottom__container {
       padding-top: 10px;
