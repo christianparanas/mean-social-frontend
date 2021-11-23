@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.formSubmitLoading = true;
     console.log(this.loginForm.value);
 
-    this.authService.register(this.loginForm.value).subscribe(
+    this.authService.login(this.loginForm.value).subscribe(
       (response: any) => {
         this.toast.success("Logged In!", { position: 'top-right' });
 
