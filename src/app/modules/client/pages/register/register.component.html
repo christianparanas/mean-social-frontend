@@ -15,7 +15,9 @@
             placeholder="Enter your name"
             formControlName="name"
           />
-          <small *ngIf="registerForm.value.name == '' && ngForm.submitted" class="p-error"
+          <small
+            *ngIf="registerForm.value.name == '' && ngForm.submitted"
+            class="p-error"
             >This field is required.</small
           >
         </div>
@@ -37,7 +39,9 @@
             class="p-error"
             >Please enter valid email.</small
           >
-          <small *ngIf="registerForm.value.email == '' && ngForm.submitted" class="p-error"
+          <small
+            *ngIf="registerForm.value.email == '' && ngForm.submitted"
+            class="p-error"
             >This field is required.</small
           >
         </div>
@@ -61,11 +65,19 @@
               </ul>
             </ng-template>
           </p-password>
-          <small *ngIf="registerForm.value.password == '' && ngForm.submitted" class="p-error "
+          <small
+            *ngIf="registerForm.value.password == '' && ngForm.submitted"
+            class="p-error"
             >This field is required.</small
           >
         </div>
-        <button [loading]="formSubmitLoading" iconPos="right" pButton type="submit" label="Sign Up"></button>
+        <button
+          [loading]="formSubmitLoading"
+          iconPos="right"
+          pButton
+          type="submit"
+          label="Sign Up"
+        ></button>
 
         <small align="center"
           >Already have an account?

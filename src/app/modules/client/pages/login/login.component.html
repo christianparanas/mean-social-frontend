@@ -6,19 +6,49 @@
         <h2>Login</h2>
       </div>
 
-      <form action="" class="">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" #ngForm="ngForm">
         <div class="p-field">
-          <input id="text" type="text" pInputText placeholder="Email or Username" />
+          <input
+            id="text"
+            type="text"
+            pInputText
+            placeholder="Email or Username"
+            formControlName="email"
+          />
+          <small
+            *ngIf="loginForm.value.email == '' && ngForm.submitted"
+            class="p-error"
+            >This field is required.</small
+          >
         </div>
         <div class="p-field">
-          <input id="password" type="password" pInputText placeholder="Password" />
+          <input
+            id="password"
+            type="password"
+            pInputText
+            placeholder="Password"
+            formControlName="password"
+          />
+          <small
+            *ngIf="loginForm.value.password == '' && ngForm.submitted"
+            class="p-error"
+            >This field is required.</small
+          >
           <small><span>Forgot your password?</span></small>
         </div>
-        <button pButton type="button" label="Login"></button>
+        <button
+          [loading]="formSubmitLoading"
+          iconPos="right"
+          pButton
+          type="submit"
+          label="Login"
+        ></button>
 
         <small align="center"
           >Don't have an account yet?
-          <span [ngStyle]="{ color: 'var(--primary-color)' }" routerLink="/register"
+          <span
+            [ngStyle]="{ color: 'var(--primary-color)' }"
+            routerLink="/register"
             >Sign Up</span
           ></small
         >

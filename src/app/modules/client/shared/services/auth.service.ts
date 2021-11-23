@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
 
 // baseURL
-const baseUrl = environment.baseURL;
+const baseURL = environment.baseURL;
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(data: any) {
-    return this.http.post(`${baseUrl}/api/users/register`, data);
+    return this.http.post(`${baseURL}/api/users/register`, data);
   }
 
-  login(data: any): Observable<any> {
-    return this.http.post(`${baseUrl}/api/auth/login`, data, {headers:{skip:"true"}});
+  login(data: any) {
+    return this.http.post(`${baseURL}/api/users/login`, data);
   }
 
   setSession(authResult: any) {
