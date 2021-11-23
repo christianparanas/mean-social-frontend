@@ -39,8 +39,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe(
       (response: any) => {
         console.log(response.message)
+        this.formSubmitLoading = false
       },
-      (error) => console.log(error)
+      (error) => {
+        this.formSubmitLoading = false
+        console.log(error)
+      }
     )
   }
 }
