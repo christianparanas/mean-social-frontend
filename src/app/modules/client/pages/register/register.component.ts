@@ -46,8 +46,12 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         this.formSubmitLoading = false;
-        console.log(error)
-        this.toast.error(error.error.message, { position: 'top-right' });
+
+        if (error.status == 0) {
+          this.toast.error(error.message, { position: 'top-right' });
+        } else {
+          this.toast.error(error.error.message, { position: 'top-right' });
+        }
       }
     );
   }
