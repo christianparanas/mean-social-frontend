@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 
 // custom module/s
 import { ClientModule } from './modules/client/client.module';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ClientModule],
+  imports: [BrowserModule, AppRoutingModule, ClientModule, HotToastModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
 })

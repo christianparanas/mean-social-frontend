@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HotToastService } from '@ngneat/hot-toast';
 
 // services
 import { AuthService } from '../../shared/services/auth.service';
@@ -12,15 +13,17 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  formSubmitLoading = false
+  formSubmitLoading = false;
 
-  constructor(private router: Router, private authService: AuthService) {
-    this.initializeForm()
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toast: HotToastService
+  ) {
+    this.initializeForm();
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   initializeForm() {
     this.registerForm = new FormGroup({
@@ -31,20 +34,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.registerForm.status == "INVALID") return
+    if (this.registerForm.status == 'INVALID') return;
 
-    this.formSubmitLoading = true
-    console.log(this.registerForm.value)
+    this.formSubmitLoading = true;
+    console.log(this.registerForm.value);
 
     this.authService.register(this.registerForm.value).subscribe(
       (response: any) => {
-        console.log(response.message)
-        this.formSubmitLoading = false
+        this.toast.success(response.message, { position: 'top-right' });
+        this.formSubmitLoading = false;
       },
       (error) => {
-        this.formSubmitLoading = false
+        this.formSubmitLoading = false;
         console.log(error)
+        this.toast.error(error.error.message, { position: 'top-right' });
       }
-    )
+    );
   }
 }
