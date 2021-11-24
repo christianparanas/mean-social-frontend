@@ -11,25 +11,16 @@ import { DarkModeToggleComponent } from './components/dark-mode-toggle/dark-mode
 // import pipes
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 
-
-
 @NgModule({
-  declarations: [
-    DarkModeToggleComponent,
-    DateAgoPipe
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    DarkModeToggleComponent
-  ],
+  declarations: [DarkModeToggleComponent, DateAgoPipe],
+  imports: [CommonModule],
+  exports: [DarkModeToggleComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
