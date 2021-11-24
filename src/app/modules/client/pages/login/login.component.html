@@ -6,7 +6,12 @@
         <h2>Login</h2>
       </div>
 
-      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" #ngForm="ngForm">
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="loginForm"
+        #ngForm="ngForm"
+        autocomplete="off"
+      >
         <div class="p-field">
           <input
             id="text"

@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    if(moment().isBefore(this.getExpiration()) == false) this.logout()
+    if (moment().isBefore(this.getExpiration()) == false) this.logout();
     return moment().isBefore(this.getExpiration());
   }
 
