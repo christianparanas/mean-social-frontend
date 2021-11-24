@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         this.toast.success("Logged In!", { position: 'top-right' });
 
-        console.log(response)
+        this.authService.setSession(response)
+        this.router.navigate(['/profile'])
         this.formSubmitLoading = false;
       },
       (error) => {

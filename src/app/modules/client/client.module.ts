@@ -18,8 +18,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { AccountComponent } from './pages/account/account.component';
 import { FriendsComponent } from './pages/friends/friends.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +28,9 @@ import { FriendsComponent } from './pages/friends/friends.component';
     HomeComponent,
     NavComponent,
     NotificationsComponent,
-    AccountComponent,
     PostcontainerComponent,
     FriendsComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,7 @@ import { FriendsComponent } from './pages/friends/friends.component';
     PrimengModule,
     CoreModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
 })
 export class ClientModule {}

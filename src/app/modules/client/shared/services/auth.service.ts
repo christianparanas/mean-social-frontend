@@ -22,17 +22,17 @@ export class AuthService {
     return this.http.post(`${baseURL}/api/users/login`, data);
   }
 
-  setSession(authResult: any) {
-    const jwtToken = authResult.token;
-    const expiresAt = moment().add(7200, 'second');
+  setSession(data: any) {
+    const jwtToken = data.access_token;
+    const expiresAt = moment().add(300, 'second');
 
-    localStorage.setItem('uJwtToken', jwtToken);
-    localStorage.setItem('uExpires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('jwtToken', jwtToken);
+    localStorage.setItem('jwtExpiresAt', JSON.stringify(expiresAt.valueOf()));
   }
 
   logout() {
-    localStorage.removeItem('uJwtToken');
-    localStorage.removeItem('uExpires_at');
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('jwtExpiresAt');
   }
 
   public isLoggedIn(): boolean {
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   getExpiration() {
-    const expiration: any = localStorage.getItem('uExpires_at');
+    const expiration: any = localStorage.getItem('jwtExpiresAt');
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
   }
