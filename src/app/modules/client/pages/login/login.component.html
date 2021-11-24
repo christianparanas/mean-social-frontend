@@ -15,11 +15,20 @@
         <div class="p-field">
           <input
             id="text"
-            type="text"
+            type="email"
             pInputText
-            placeholder="Email or Username"
+            placeholder="Email"
             formControlName="email"
           />
+          <small
+            id="email"
+            *ngIf="
+            loginForm.controls.email.status == 'INVALID' &&
+              loginForm.value.email != ''
+            "
+            class="p-error"
+            >Please enter valid email.</small
+          >
           <small
             *ngIf="loginForm.value.email == '' && ngForm.submitted"
             class="p-error"
