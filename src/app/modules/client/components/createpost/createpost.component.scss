@@ -16,7 +16,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
-      border-bottom: 1px solid var(--borderColor);
+      border-bottom: 1px solid var(--pageBgColor);
   
       .p-dialog-header-icons {
         display: none;
@@ -28,6 +28,62 @@
 
         i {
           margin-right: 10px;
+        }
+      }
+    }
+
+    .p-dialog-content {
+      padding: 0;
+      
+      .content__container {
+
+        .postOptions__container {
+          display: grid;
+          grid-template-columns: 50px 1fr;
+          grid-gap: 10px;
+          padding: 10px;
+
+          .img__container {
+            img {
+              width: 50px;
+              height: 50px;
+              object-fit: cover;
+              border-radius: 50%;
+            }
+          }
+
+          .container {
+            h5 {
+              margin-bottom: 5px;
+            }
+
+            .postaudience_btn {
+              display: flex;
+              align-items: center;
+              width: fit-content;
+              padding: 4px 7px;
+              border-radius: 3px;
+              font-size: 10px;
+              cursor: pointer;
+              border: 1px solid var(--secondaryColor);
+
+              p {
+                margin: 0 5px;
+              }
+            }
+          }
+        }
+
+        .content {
+
+          textarea {
+            background-color: var(--primaryBgColor);
+            border: 0;
+            color: var(--primaryColor);
+            outline: 0;
+            padding: 0 10px 10px;
+            width: 100%;
+          }
         }
       }
     }

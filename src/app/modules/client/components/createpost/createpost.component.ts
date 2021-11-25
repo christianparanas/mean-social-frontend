@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./createpost.component.scss']
 })
 export class CreatepostComponent implements OnInit {
-  isCreatePostModalOpen: boolean = false
+  isCreatePostModalOpen: boolean = true
 
   constructor() { }
 
