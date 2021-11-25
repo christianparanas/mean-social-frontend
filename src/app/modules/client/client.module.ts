@@ -20,6 +20,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CreatepostComponent } from './components/createpost/createpost.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     PostcontainerComponent,
     FriendsComponent,
     ProfileComponent,
+    CreatepostComponent,
   ],
   imports: [
     CommonModule,

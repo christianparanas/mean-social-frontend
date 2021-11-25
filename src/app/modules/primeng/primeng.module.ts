@@ -9,6 +9,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { SidebarModule } from 'primeng/sidebar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { SkeletonModule } from 'primeng/skeleton';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     SidebarModule,
     TieredMenuModule,
     SkeletonModule,
+    DialogModule,
   ],
 })
 export class PrimengModule {}

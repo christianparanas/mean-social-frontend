@@ -1,0 +1,16 @@
+<div class="createpost__container">
+  <p-dialog
+    [(visible)]="isCreatePostModalOpen"
+    [modal]="true"
+  >
+    <ng-template pTemplate="header">
+      <div class="container">
+        <i class="fal fa-arrow-left" (click)="openCloseCreatePostModal()"></i>
+        <h5>Create Post</h5>
+      </div>
+      <button pButton class="postBtn">Post</button>
+    </ng-template>
+
+    Content
+  </p-dialog>
+</div>
