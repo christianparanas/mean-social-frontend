@@ -25,7 +25,7 @@ export class CreatepostComponent implements OnInit {
   }
 
   sole() {
-    if (this.postContent.text.length == 0) {
+    if (this.postContent.textContent.length == 0) {
       this.disablePostBtn = true;
       return;
     }
