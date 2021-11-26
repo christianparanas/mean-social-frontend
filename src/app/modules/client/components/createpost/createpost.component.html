@@ -1,20 +1,24 @@
 <div class="createpost__container">
-  <p-dialog
-    [(visible)]="isCreatePostModalOpen"
-    [modal]="true"
-  >
+  <p-dialog [(visible)]="isCreatePostModalOpen" [modal]="true">
     <ng-template pTemplate="header">
       <div class="container">
         <i class="fal fa-arrow-left" (click)="openCloseCreatePostModal()"></i>
         <h5>Create Post</h5>
       </div>
-      <button pButton class="postBtn">Post</button>
+      <button
+        pButton
+        [disabled]="disablePostBtn"
+        class="postBtn"
+        (click)="onSubmit()"
+      >
+        Post
+      </button>
     </ng-template>
 
     <div class="content__container">
       <div class="postOptions__container">
         <div class="img__container">
-          <img src="../../../../../assets/images/chan.jpg" alt="">
+          <img src="../../../../../assets/images/chan.jpg" alt="" />
         </div>
         <div class="container">
           <h5>Christian Paranas</h5>
@@ -26,7 +30,14 @@
         </div>
       </div>
       <div class="content">
-        <textarea placeholder="What's on your mind?" id="" cols="30" rows="10"></textarea>
+        <textarea
+          placeholder="What's on your mind?"
+          id=""
+          cols="30"
+          rows="10"
+          [(ngModel)]="postContent.text"
+          (input)="sole()"
+        ></textarea>
       </div>
     </div>
   </p-dialog>

@@ -24,7 +24,7 @@ export class AuthService {
 
   setSession(data: any) {
     const jwtToken = data.access_token;
-    const expiresAt = moment().add(300, 'second');
+    const expiresAt = moment().add(7200, 'second');
 
     localStorage.setItem('jwtToken', jwtToken);
     localStorage.setItem('jwtExpiresAt', JSON.stringify(expiresAt.valueOf()));

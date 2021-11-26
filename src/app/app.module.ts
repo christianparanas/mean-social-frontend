@@ -8,10 +8,14 @@ import { AppComponent } from './app.component';
 import { ClientModule } from './modules/client/client.module';
 import { HotToastModule } from '@ngneat/hot-toast';
 
-
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ClientModule, HotToastModule.forRoot()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ClientModule,
+    HotToastModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
