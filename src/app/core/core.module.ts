@@ -14,7 +14,7 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 @NgModule({
   declarations: [DarkModeToggleComponent, DateAgoPipe],
   imports: [CommonModule],
-  exports: [DarkModeToggleComponent],
+  exports: [DarkModeToggleComponent, DateAgoPipe],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

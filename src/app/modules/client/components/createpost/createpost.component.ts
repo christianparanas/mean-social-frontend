@@ -8,7 +8,7 @@ import { PostService } from '../../shared/services/post.service';
   styleUrls: ['./createpost.component.scss'],
 })
 export class CreatepostComponent implements OnInit {
-  isCreatePostModalOpen: boolean = true;
+  isCreatePostModalOpen: boolean = false;
   disablePostBtn: boolean = true;
 
   postContent: any = {

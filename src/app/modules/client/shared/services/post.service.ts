@@ -15,4 +15,8 @@ export class PostService {
   createPost(data: any) {
     return this.http.post(`${baseURL}/api/posts/`, data);
   }
+
+  getPosts() {
+    return this.http.get(`${baseURL}/api/posts/`);
+  }
 }

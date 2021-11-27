@@ -8,7 +8,7 @@
     <button (click)="createPost.openCloseCreatePostModal()" pButton>Create Post</button>
 
     <div class="posts__container">
-      <app-postcontainer *ngFor="let post of postArr"></app-postcontainer>
+      <app-postcontainer *ngFor="let post of postsArray" [postArray]="post"></app-postcontainer>
     </div>
   </div>
 </div>

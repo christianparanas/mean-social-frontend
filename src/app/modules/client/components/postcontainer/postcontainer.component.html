@@ -1,14 +1,14 @@
-<div class="postcontainer__main_container">
+<div class="postcontainer__main_container" *ngIf="postArray">
   <div class="post_header__container">
     <div class="post_user_image__container">
       <img src="../../../../../assets/images/chan.jpg" alt="" />
     </div>
     <div class="post_details__container">
       <div class="post_details__wrapper">
-        <div class="post_username">Christian Paranas</div>
+        <div class="post_username">{{ postArray.user.name }}</div>
         <div class="post_dateposted_privacy__container">
           <div class="dateposted__wrapper">
-            2h
+            {{ convertPostData(postArray.updatedAt) }}
           </div>
           <div class="privacy_wrapper">
             <i class="fal fa-globe-asia"></i>
@@ -22,7 +22,7 @@
 
   <div class="post_content__container">
     <div class="post_text_content__container">
-      Lorem Ipsum dolor
+      {{ postArray.textContent }}
     </div>
     <div class="post_image_content__container">
       <img src="../../../../../assets/images/chan.jpg" alt="">
