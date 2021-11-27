@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
 
 import { PostService } from '../../shared/services/post.service';
 
@@ -16,7 +17,7 @@ export class CreatepostComponent implements OnInit {
     textContent: '',
   };
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private toast: HotToastService) {}
 
   ngOnInit(): void {}
 
@@ -41,8 +42,10 @@ export class CreatepostComponent implements OnInit {
         privacy: this.postContent.privacy,
       })
       .subscribe(
-        (response) => {
+        (response: any) => {
           console.log(response);
+          this.toast.success(response.message, { position: 'top-right' })
+          this.openCloseCreatePostModal()
         },
         (error) => {
           console.log(error);

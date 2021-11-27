@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from "moment"
+import * as moment from 'moment';
 
 import { MenuItem } from 'primeng/api';
 
@@ -32,6 +32,6 @@ export class PostcontainerComponent implements OnInit {
   }
 
   convertPostData(date: any): any {
-    return moment(date).fromNow()
-  } 
+    return moment(date).fromNow();
+  }
 }

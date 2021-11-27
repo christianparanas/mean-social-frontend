@@ -15,7 +15,12 @@
           </div>
         </div>
       </div>
-      <p-tieredMenu class="postmenu" #menu [model]="items" [popup]="true"></p-tieredMenu>
+      <p-tieredMenu
+        class="postmenu"
+        #menu
+        [model]="items"
+        [popup]="true"
+      ></p-tieredMenu>
       <i (click)="menu.toggle($event)" class="fal fa-ellipsis-h"></i>
     </div>
   </div>
@@ -25,7 +30,7 @@
       {{ postArray.textContent }}
     </div>
     <div class="post_image_content__container">
-      <img src="../../../../../assets/images/chan.jpg" alt="">
+      <img src="../../../../../assets/images/chan.jpg" alt="" />
     </div>
   </div>
 
@@ -33,16 +38,20 @@
     <div class="top__container">
       <div class="post_likes_count__container">
         <div class="icons">
-          <img src="../../../../../assets/svgs/facebook-like.svg" alt="">
+          <img src="../../../../../assets/svgs/facebook-like.svg" alt="" />
         </div>
-        <div class="count">
-          189
-        </div>
+        <div class="count">189</div>
       </div>
       <div class="post_commentShare_count__container">
-        <div class="container"><p>199</p>Comments</div>
+        <div class="container">
+          <p>199</p>
+          Comments
+        </div>
         <p class="dot">⸱</p>
-        <div class="container"><p>12</p>Shares</div>
+        <div class="container">
+          <p>12</p>
+          Shares
+        </div>
       </div>
     </div>
     <div class="bottom__container">
@@ -62,6 +71,6 @@
   </div>
 </div>
 
-<div class="post_skeleton__container">
+<div class="post_skeleton__container" *ngIf="!postArray">
   <p-skeleton></p-skeleton>
 </div>
