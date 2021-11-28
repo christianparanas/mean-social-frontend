@@ -21,6 +21,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { FriendsComponent } from './pages/friends/friends.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CreatepostComponent } from './components/createpost/createpost.component';
+import { PostaudienceComponent } from './components/postaudience/postaudience.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CreatepostComponent } from './components/createpost/createpost.componen
     FriendsComponent,
     ProfileComponent,
     CreatepostComponent,
+    PostaudienceComponent,
   ],
   imports: [
     CommonModule,

@@ -20,6 +20,7 @@
     "@angular/router": "~12.2.0",
     "@ngneat/hot-toast": "^3.4.3",
     "@ngneat/overview": "^2.0.2",
+    "@supabase/supabase-js": "^1.28.2",
     "angular-dark-mode": "^3.0.2",
     "moment": "^2.29.1",
     "primeflex": "^3.1.0",

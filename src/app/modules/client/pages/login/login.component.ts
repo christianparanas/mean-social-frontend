@@ -5,11 +5,12 @@ import { HotToastService } from '@ngneat/hot-toast';
 
 // services
 import { AuthService } from '../../shared/services/auth.service';
+import { SupabaseService } from '../../shared/services/supabase.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -18,13 +19,25 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private supabaseService: SupabaseService
   ) {
     this.initializeForm();
   }
 
   ngOnInit(): void {
+    this.loadUser();
   }
+
+  loadUser() {
+    console.log(this.supabaseService.getUser);
+  }
+
+  signInWithGoogle = async () => {
+    this.supabaseService.signIn();
+    
+    // this.supabaseService.signOut()
+  };
 
   initializeForm() {
     this.loginForm = new FormGroup({
@@ -41,16 +54,15 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.loginForm.value).subscribe(
       (response: any) => {
-        this.toast.success("Logged In!", { position: 'top-right' });
+        this.toast.success('Logged In!', { position: 'top-right' });
 
-        this.authService.setSession(response)
-        this.router.navigate(['/profile'])
+        this.authService.setSession(response);
+        this.router.navigate(['/profile']);
         this.formSubmitLoading = false;
       },
       (error) => {
         this.formSubmitLoading = false;
         console.log(error);
-        
 
         if (error.status == 0) {
           this.toast.error(error.message, { position: 'top-right' });
@@ -60,5 +72,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }

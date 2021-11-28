@@ -1,0 +1,24 @@
+<div class="postaudience__container">
+  <p-dialog [(visible)]="isPostAudienceModalOpen" [modal]="true">
+    <ng-template pTemplate="header">
+      <div class="container">
+        <i class="fal fa-arrow-left" (click)="openClosePostAudienceModal()"></i>
+        <h5>Post Audience</h5>
+      </div>
+    </ng-template>
+
+    <div class="content__container">
+      <div class="information__container">
+        <h5>Who can see your post?</h5>
+        <p>
+          Your post will show up in News Feed, on your profile and in search
+          results.
+        </p>
+        <p>
+          Your default audience is set to Only me, but you can change the
+          audience of this specific post.
+        </p>
+      </div>
+    </div>
+  </p-dialog>
+</div>
