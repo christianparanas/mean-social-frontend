@@ -22,6 +22,10 @@ export class AuthService {
     return this.http.post(`${baseURL}/api/users/login`, data);
   }
 
+  loginWithGoogle(data: any) {
+    return this.http.post(`${baseURL}/api/users/loginwithgoogle`, data);
+  }
+
   setSession(data: any) {
     const jwtToken = data.access_token;
     const expiresAt = moment().add(7200, 'second');

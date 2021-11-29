@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   AuthChangeEvent,
   createClient,
@@ -26,7 +27,7 @@ export class SupabaseService {
         provider: 'google',
       },
       {
-        redirectTo: environment.siteURL + '/login',
+        redirectTo: environment.siteURL + '/login?provider=true',
       }
     );
   }

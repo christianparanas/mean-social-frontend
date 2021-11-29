@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 
@@ -15,8 +15,11 @@ import { SupabaseService } from '../../shared/services/supabase.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   formSubmitLoading = false;
+  isProvider: any;
+  thruProviderLoginData: any;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private toast: HotToastService,
@@ -25,18 +28,61 @@ export class LoginComponent implements OnInit {
     this.initializeForm();
   }
 
-  ngOnInit(): void {
-    this.loadUser();
+  isEmptyObject(obj: any) {
+    return !!obj && Object.keys(obj).length === 0 && obj.constructor === Object;
+  }
+
+  async ngOnInit() {
+    this.route.queryParamMap.subscribe(
+      (params: any) => (this.isProvider = params.params)
+    );
+
+    if (!this.isEmptyObject(this.isProvider)) {
+      setTimeout(() => {
+        this.loadUser();
+      }, 3000);
+    }
   }
 
   loadUser() {
-    console.log(this.supabaseService.getUser);
+    const data = this.supabaseService.getUser;
+
+    if (data == null) {
+      this.router.navigate(['/login']);
+    } else {
+      this.thruProviderLoginData = {
+        id: data?.id,
+        name: data?.user_metadata.name,
+        email: data?.email,
+        image: data?.user_metadata.avatar_url,
+        sub: data?.user_metadata.sub,
+      };
+
+      const dataLogin: any = {
+        email: data?.email,
+        password: data?.user_metadata.sub,
+      };
+
+      this.sendProviderData(dataLogin);
+    }
+  }
+
+  sendProviderData(dataLogin: any) {
+    this.authService.loginWithGoogle(this.thruProviderLoginData).subscribe(
+      (response) => {
+        this.supabaseService.signOut();
+        this.onSubmit(2, dataLogin);
+      },
+      (error) => {
+        console.log(error);
+        this.supabaseService.signOut();
+        this.onSubmit(2, dataLogin);
+      }
+    );
   }
 
   signInWithGoogle = async () => {
     this.supabaseService.signIn();
-    
-    // this.supabaseService.signOut()
   };
 
   initializeForm() {
@@ -46,13 +92,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.status == 'INVALID') return;
+  onSubmit(provider: any, data?: any) {
+    if (provider == 1) {
+      if (this.loginForm.status == 'INVALID') return;
 
-    this.formSubmitLoading = true;
-    console.log(this.loginForm.value);
+      this.formSubmitLoading = true;
+      this.loginRequest(this.loginForm.value);
+    } else {
+      this.loginRequest({ email: data.email, password: data.password });
+    }
+  }
 
-    this.authService.login(this.loginForm.value).subscribe(
+  loginRequest(data: any) {
+    this.authService.login(data).subscribe(
       (response: any) => {
         this.toast.success('Logged In!', { position: 'top-right' });
 
