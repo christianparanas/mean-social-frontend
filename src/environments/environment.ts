@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  siteURL: "http://localhost:4200",
+  siteURL: 'http://localhost:4200',
   baseURL: 'http://localhost:3000',
   supabaseUrl: 'https://hzniiuicewjjaujxpnlm.supabase.co',
   supabaseKey:
