@@ -8,11 +8,10 @@ import { environment } from 'src/environments/environment';
 const baseURL = environment.baseURL;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProfileData() {
     return this.http.get(`${baseURL}/api/users/profile`);

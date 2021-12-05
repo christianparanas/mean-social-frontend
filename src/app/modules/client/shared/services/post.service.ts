@@ -6,10 +6,9 @@ import { environment } from 'src/environments/environment';
 const baseURL = environment.baseURL;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostService {
-
   constructor(private http: HttpClient) {}
 
   createPost(data: any) {
