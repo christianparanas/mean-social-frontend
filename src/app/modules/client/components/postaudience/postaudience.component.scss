@@ -44,6 +44,30 @@
 
           p {
             font-size: 11px;
+            margin: 15px 0;
+          }
+
+          .chooseAudience {
+            font-size: 12px;
+          }
+
+          .checkboxes__container {
+
+            .checkbox__container {
+              display: grid;
+              grid-template-columns: 35px 30px 1fr;
+              padding: 15px 5px;
+              align-items: center;
+              border-bottom: 1px solid var(--borderColor);
+              cursor: pointer;
+
+              .box {
+
+                p {
+                  margin: 0;
+                }
+              }
+            }
           }
 
           p:nth-child(1) {

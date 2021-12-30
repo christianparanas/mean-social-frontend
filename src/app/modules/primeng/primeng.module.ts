@@ -10,6 +10,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { DialogModule } from 'primeng/dialog';
     TieredMenuModule,
     SkeletonModule,
     DialogModule,
+    CheckboxModule
   ],
 })
 export class PrimengModule {}

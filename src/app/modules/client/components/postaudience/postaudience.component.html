@@ -18,6 +18,31 @@
           Your default audience is set to Only me, but you can change the
           audience of this specific post.
         </p>
+
+        <h5 class="chooseAudience">Choose Audience</h5>
+        <div
+          class="checkboxes__container"
+          *ngFor="let audience of postAudienceArray"
+          (click)="unselectCheckbox(audience.title)"
+        >
+          <div class="checkbox__container">
+            <div class="box">
+              <p-checkbox
+                [disabled]="audience.isSelected ? true : false"
+                [(ngModel)]="audience.isSelected"
+                [binary]="true"
+                #checkB
+              ></p-checkbox>
+            </div>
+            <div class="box">
+              <div class="{{ audience.icon }}"></div>
+            </div>
+            <div class="box">
+              <h6>{{ audience.title }}</h6>
+              <p>{{ audience.description }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </p-dialog>
