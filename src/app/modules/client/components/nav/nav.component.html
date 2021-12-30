@@ -50,9 +50,30 @@
           <div class="shortcuts__container">
             <h5>All Shortcuts</h5>
             <div class="shortcuts_content__container">
-              <div class="shortcut__container"  *ngFor="let shortcut of shortcutsArray">
+              <div
+                class="shortcut__container"
+                *ngFor="let shortcut of shortcutsArray"
+              >
                 <div class="{{ shortcut.icon }}"></div>
                 <p>{{ shortcut.title }}</p>
+              </div>
+            </div>
+
+            <div class="sidebar_options__container">
+              <p-accordion styleClass="accordion"> 
+                <p-accordionTab header="Help & Support">
+                  Content 1
+                </p-accordionTab>
+                <p-accordionTab header="Settings & Privacy">
+                  <div class="darkMode__container">
+                    <p>Dark mode:</p>
+                    <app-dark-mode-toggle></app-dark-mode-toggle>
+                  </div>
+                </p-accordionTab>
+              </p-accordion>
+              <div class="logoutBtn">
+                <div class="fal fa-home"></div>
+                Logout
               </div>
             </div>
           </div>

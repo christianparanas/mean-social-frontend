@@ -118,6 +118,60 @@
               }
             }
           }
+
+          .sidebar_options__container {
+            margin-top: 20px;
+            display: grid;
+            gap: 5px;
+
+            ::ng-deep .accordion.p-accordion {
+              display: grid;
+              gap: 5px;
+
+              .p-accordion-header {
+
+                .p-accordion-header-link {
+                  background-color: var(--secondaryBgColor);
+                  color: var(--primaryColor);
+                  box-shadow: inset 0 -3px 0 rgba(0,0,0,.15);
+                  border: 0;
+                  border-radius: 8px;
+
+                  .pi {
+                    position: absolute;
+                    right: 0;
+                  }
+                }
+              }
+
+              .p-accordion-content {
+                background-color: var(--secondaryBgColor);
+                color: var(--primaryColor);
+                border: 0;
+                border-radius: 8px;
+                padding: 5px;
+
+                .darkMode__container {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  box-shadow: inset 0 -3px 0 rgba(0,0,0,.15);
+                  background-color: var(--primaryBgColor);
+                  border-radius: 8px;
+                  padding: 16px 20px;
+                }
+              }
+            }
+
+            .logoutBtn {
+              padding: 16px 20px;
+              background-color: var(--secondaryBgColor);
+              color: var(--primaryColor);
+              box-shadow: inset 0 -3px 0 rgba(0,0,0,.15);
+              border-radius: 8px;
+              cursor: pointer;
+            }
+          }
         }
       }
     }

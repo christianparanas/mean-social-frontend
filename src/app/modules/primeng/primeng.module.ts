@@ -11,6 +11,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     TieredMenuModule,
     SkeletonModule,
     DialogModule,
-    CheckboxModule
+    CheckboxModule,
+    AccordionModule
   ],
 })
 export class PrimengModule {}
