@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  sidebarOpen = true;
+  sidebarOpen = false;
   shortcutsArray: any = [
     {
       icon: "fal fa-flag",

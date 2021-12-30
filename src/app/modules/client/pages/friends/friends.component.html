@@ -3,6 +3,12 @@
 
   <div class="friends__container">
 
-    friends
+    <div class="user" *ngFor="let user of usersArray">
+      <img [src]="user.image != null ? user.image : '../../../../../assets/images/chan.jpg'" alt="">
+      <div class="details">
+        <h4>{{ user.name }}</h4>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
   </div>
 </div>

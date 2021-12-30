@@ -1,6 +1,34 @@
 .friends__main_container {
-
   .friends__container {
-    padding: 100px 0;
+    padding: 120px 10px;
+    display: grid;
+    gap: 5px;
+
+    .user {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 10px;
+      padding: 10px;
+      background-color: var(--primaryBgColor);
+      color: var(--primaryColor);
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .details {
+
+        p {
+          color: grey;
+          font-size: 10px;
+        }
+      }
+    }
   }
 }
