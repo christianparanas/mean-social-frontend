@@ -46,6 +46,17 @@
             <p>See your profile</p>
           </div>
         </div>
+        <div class="containers">
+          <div class="shortcuts__container">
+            <h5>All Shortcuts</h5>
+            <div class="shortcuts_content__container">
+              <div class="shortcut__container"  *ngFor="let shortcut of shortcutsArray">
+                <div class="{{ shortcut.icon }}"></div>
+                <p>{{ shortcut.title }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </p-sidebar>
   </div>

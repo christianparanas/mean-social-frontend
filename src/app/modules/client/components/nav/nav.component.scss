@@ -62,7 +62,7 @@
 
     ::ng-deep .sidebar.p-sidebar {
       z-index: 101;
-      width: 250px;
+      width: 330px;
       color: var(--primaryColor);
       background-color: var(--primaryBgColor);
       padding: 0;
@@ -72,15 +72,14 @@
       }
 
       .sidebar_content__container {
-
-
         .profilelink__container {
           display: grid;
           grid-template-columns: 40px 1fr;
           grid-gap: 10px;
           padding: 10px;
           cursor: pointer;
-          
+              box-shadow: inset 0 -3px 0 rgba(0,0,0,.15);
+
           img {
             width: 40px;
             height: 40px;
@@ -89,10 +88,34 @@
           }
 
           .details {
-
             p {
               font-size: 12px;
               margin-top: 5px;
+            }
+          }
+        }
+
+        .containers {
+          padding: 10px;
+
+          .shortcuts__container {
+
+            h5 {
+              margin: 15px 0 10px;
+            }
+
+            .shortcuts_content__container {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 8px;
+
+              .shortcut__container {
+                background-color: var(--secondaryBgColor);
+                border-radius: 8px;
+                padding: 15px;
+                cursor: pointer;
+                box-shadow: inset 0 -3px 0 rgba(0,0,0,.15);
+              }
             }
           }
         }
