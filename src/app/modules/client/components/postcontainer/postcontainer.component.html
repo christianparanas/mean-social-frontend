@@ -11,7 +11,12 @@
             {{ convertPostData(postArray.updatedAt) }}
           </div>
           <div class="privacy_wrapper">
-            <i class="fal fa-globe-asia"></i>
+            <i
+              *ngIf="postArray.privacy == 'public'"
+              class="fal fa-globe-asia"
+            ></i>
+            <i *ngIf="postArray.privacy == 'friends'" class="fal fa-users"></i>
+            <i *ngIf="postArray.privacy == 'onlyme'" class="fal fa-lock"></i>
           </div>
         </div>
       </div>
@@ -29,7 +34,7 @@
     <div class="post_text_content__container">
       {{ postArray.textContent }}
     </div>
-    <div class="post_image_content__container">
+    <div *ngIf="postArray.image != null" class="post_image_content__container">
       <img src="../../../../../assets/images/chan.jpg" alt="" />
     </div>
   </div>
@@ -40,11 +45,11 @@
         <div class="icons">
           <img src="../../../../../assets/svgs/facebook-like.svg" alt="" />
         </div>
-        <div class="count">189</div>
+        <div class="count">1</div>
       </div>
       <div class="post_commentShare_count__container">
         <div class="container">
-          <p>199</p>
+          <p>2</p>
           Comments
         </div>
         <p class="dot">⸱</p>

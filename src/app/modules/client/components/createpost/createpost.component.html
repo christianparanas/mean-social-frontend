@@ -1,5 +1,5 @@
 <div class="createpost__container">
-  <app-postaudience #postAudience></app-postaudience>
+  <app-postaudience (setAudienceEvent)="setAudience($event)" #postAudience></app-postaudience>
 
   <p-dialog [(visible)]="isCreatePostModalOpen" [modal]="true">
     <ng-template pTemplate="header">
@@ -24,9 +24,12 @@
         </div>
         <div class="container">
           <h5>Christian Paranas</h5>
-          <div class="postaudience_btn" (click)="postAudience.openClosePostAudienceModal()">
-            <i class="fal fa-lock"></i>
-            <p>Only me</p>
+          <div
+            class="postaudience_btn"
+            (click)="postAudience.openClosePostAudienceModal()"
+          >
+            <i [class]="postContent.icon"></i>
+            <p>{{ postContent.privacy }}</p>
             <i class="fal fa-caret-down"></i>
           </div>
         </div>

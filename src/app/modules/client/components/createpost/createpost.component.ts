@@ -14,11 +14,15 @@ export class CreatepostComponent implements OnInit {
   disablePostBtn: boolean = true;
 
   postContent: any = {
-    privacy: 'OnlyMe',
+    privacy: 'public',
     textContent: '',
+    icon: 'fal fa-globe',
   };
 
-  constructor(private postService: PostService, private toast: HotToastService) {}
+  constructor(
+    private postService: PostService,
+    private toast: HotToastService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -45,17 +49,22 @@ export class CreatepostComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(response);
-          this.toast.success(response.message, { position: 'top-right' })
-          this.openCloseCreatePostModal()
-          this.reloadPostOnPosted()
+          this.toast.success(response.message, { position: 'top-right' });
+          this.openCloseCreatePostModal();
+          this.reloadPostOnPosted();
 
           // clear input
-          this.postContent.textContent = ""
+          this.postContent.textContent = '';
         },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  setAudience(event: any) {
+    this.postContent.privacy = event.aud;
+    this.postContent.icon = event.icon;
   }
 
   reloadPostOnPosted(): void {

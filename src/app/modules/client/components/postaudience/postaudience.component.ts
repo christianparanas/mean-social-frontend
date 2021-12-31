@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-postaudience',
@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./postaudience.component.scss'],
 })
 export class PostaudienceComponent implements OnInit {
+  @Output() setAudienceEvent = new EventEmitter();
   isPostAudienceModalOpen: boolean = false;
+  selectedAudience: any = ['public', 'fal fa-globe'];
   postAudienceArray: any = [
     {
-      isSelected: false,
-      icon: 'fal fa-globe',
+      isSelected: true,
+      id: 'public',
+      icon: 'fal fa-globe-asia',
       title: 'Public',
       description: 'Anyone on or off Lorem',
     },
@@ -18,11 +21,13 @@ export class PostaudienceComponent implements OnInit {
       isSelected: false,
       icon: 'fal fa-users',
       title: 'Friends',
+      id: 'friends',
       description: 'Your friends on Lorem',
     },
     {
-      isSelected: true,
+      isSelected: false,
       icon: 'fal fa-lock',
+      id: 'onlyme',
       title: 'Only me',
       description: 'Only you can see your post',
     },
@@ -36,6 +41,16 @@ export class PostaudienceComponent implements OnInit {
     this.isPostAudienceModalOpen = !this.isPostAudienceModalOpen;
   }
 
+  setAudience() {
+    this.setAudienceEvent.emit({
+      aud: this.selectedAudience[0],
+      icon: this.selectedAudience[1],
+    });
+
+    // close aud modal
+    this.openClosePostAudienceModal()
+  }
+
   // unselect other checkbox if one of them is selected
   unselectCheckbox(audTitle: any) {
     this.postAudienceArray.map((each: any) => {
@@ -43,6 +58,8 @@ export class PostaudienceComponent implements OnInit {
         each.isSelected = false;
       } else {
         each.isSelected = true;
+        this.selectedAudience[0] = each.id;
+        this.selectedAudience[1] = each.icon;
       }
     });
   }
