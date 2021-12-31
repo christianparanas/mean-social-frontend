@@ -10,8 +10,8 @@ import { PostService } from '../../shared/services/post.service';
 })
 export class CreatepostComponent implements OnInit {
   @Output() postedEvent = new EventEmitter<string>();
-  isCreatePostModalOpen: boolean = true;
-  disablePostBtn: boolean = true;
+  isCreatePostModalOpen: boolean = false;
+  disablePostBtn: boolean = false;
   isPosting: boolean = false;
   isPostingLabel: string = 'Post';
 

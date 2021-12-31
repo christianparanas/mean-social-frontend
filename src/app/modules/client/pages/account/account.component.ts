@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
+// import service
+import { PostService } from '../../shared/services/post.service';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
+  constructor(private postService: PostService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
+  
 }

@@ -1,1 +1,37 @@
-<p>profile works!</p>
+<div class="profile__container">
+  <div class="profile__wrapper">
+    <div class="header">
+      <div class="gobackBtn" routerLink="/">
+        <i class="fal fa-arrow-left"></i>
+      </div>
+      <input type="text" placeholder="Search" />
+    </div>
+
+    <div class="userData__container">
+      <div class="coverPhoto__container">
+        
+      </div>
+      <div class="profilePhoto__container">
+        <div class="box">
+          <img src="../../../../../assets/images/chan.jpg" alt="">
+        <i class="fal fa-camera"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="posts__container">
+      <div class="noPost" *ngIf="postsArr && postsArr.length == 0">
+        <h3>No Post(s)</h3>
+      </div>
+
+      <div class="noPost" *ngIf="postsArr == null">
+        <h3>Something went wrong.</h3>
+      </div>
+
+      <app-postcontainer
+        *ngFor="let post of postsArr"
+        [postArray]="post"
+      ></app-postcontainer>
+    </div>
+  </div>
+</div>

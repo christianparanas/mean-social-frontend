@@ -1,0 +1,101 @@
+
+.profile__container {
+
+  .profile__wrapper {
+
+
+    .header {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 10px;
+      color: var(--primaryColor);
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+      padding: 15px 20px 15px 10px;
+      background-color: var(--secondaryBgColor);
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+
+      .gobackBtn {
+        text-align: center;
+      }
+
+      input {
+        padding: 10px 15px;
+        background-color: var(--primaryBgColor);
+        outline: 0;
+        border: 0;
+        color: var(--primaryColor);
+        border-radius: 8px;
+        border: 2px solid var(--borderColor);
+      }
+    }
+
+    .userData__container {
+
+      .coverPhoto__container {
+        height: 280px;
+        padding-top: 100px;
+        margin: 0 20px;
+        background-color: var(--primaryBgColor);
+        
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+      }
+
+      .profilePhoto__container {
+        height: 200px;
+        position: relative;
+        top: -100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .box {
+          position: relative;
+          width: fit-content;
+
+          img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondaryBgColor);
+          }
+  
+          .fa-camera {
+            position: absolute;
+            bottom: 20px;
+            right: 15px;
+            padding: 10px;
+            background: #000;
+            color: #fff;
+            opacity: 0.5;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      
+    }
+
+    .posts__container {
+      display: grid;
+      gap: 5px;
+
+      .noPost {
+        padding: 100px 20px;
+        display: flex;
+        justify-content: center;
+  
+        h3 {
+          color: var(--primaryColor);
+        }
+      }
+    }
+  }
+}
