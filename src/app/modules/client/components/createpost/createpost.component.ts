@@ -10,8 +10,10 @@ import { PostService } from '../../shared/services/post.service';
 })
 export class CreatepostComponent implements OnInit {
   @Output() postedEvent = new EventEmitter<string>();
-  isCreatePostModalOpen: boolean = false;
+  isCreatePostModalOpen: boolean = true;
   disablePostBtn: boolean = true;
+  isPosting: boolean = false;
+  isPostingLabel: string = 'Post';
 
   postContent: any = {
     privacy: 'public',
@@ -41,6 +43,11 @@ export class CreatepostComponent implements OnInit {
   }
 
   onSubmit() {
+    // disable post btn to prevent multi click on btn
+    this.disablePostBtn = true;
+    this.isPosting = true;
+    this.isPostingLabel = 'Posting';
+
     this.postService
       .createPost({
         textContent: this.postContent.textContent,
@@ -49,15 +56,29 @@ export class CreatepostComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(response);
-          this.toast.success(response.message, { position: 'top-right' });
+          this.toast.success('Posted!', {
+            theme: 'snackbar',
+            position: 'bottom-center',
+          });
           this.openCloseCreatePostModal();
           this.reloadPostOnPosted();
 
           // clear input
           this.postContent.textContent = '';
+          this.isPosting = false;
+          this.isPostingLabel = 'Post';
         },
         (error) => {
           console.log(error);
+
+          // enable btn
+          this.disablePostBtn = false;
+          this.isPosting = false;
+          this.isPostingLabel = 'Post';
+          this.toast.error('Something went wrong!', {
+            theme: 'snackbar',
+            position: 'bottom-center',
+          });
         }
       );
   }

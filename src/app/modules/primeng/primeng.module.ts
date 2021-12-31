@@ -12,6 +12,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AccordionModule } from 'primeng/accordion';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { AccordionModule } from 'primeng/accordion';
     SkeletonModule,
     DialogModule,
     CheckboxModule,
-    AccordionModule
+    AccordionModule,
+    ProgressBarModule,
   ],
 })
 export class PrimengModule {}

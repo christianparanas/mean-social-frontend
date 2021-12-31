@@ -10,10 +10,12 @@
       <button
         pButton
         [disabled]="disablePostBtn"
+        [loading]="isPosting"
+        [label]="isPostingLabel"
         class="postBtn"
         (click)="onSubmit()"
+        iconPos="right"
       >
-        Post
       </button>
     </ng-template>
 
