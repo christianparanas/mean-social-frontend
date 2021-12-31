@@ -21,10 +21,6 @@ export class NavComponent implements OnInit {
       title: "Events"
     },
     {
-      icon: "fal fa-virus",
-      title: "COVID-19 Information Center"
-    },
-    {
       icon: "fal fa-briefcase",
       title: "Jobs"
     },
@@ -35,6 +31,10 @@ export class NavComponent implements OnInit {
     {
       icon: "fal fa-user",
       title: "Find friends"
+    },
+    {
+      icon: "fal fa-virus",
+      title: "COVID-19 Information Center"
     },
   ]
 

@@ -119,6 +119,8 @@
                 padding: 15px;
                 cursor: pointer;
                 box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+                border: 2px solid var(--borderColor);
+                height: fit-content;
               }
             }
           }
@@ -133,12 +135,15 @@
               gap: 5px;
 
               .p-accordion-header {
+
+
                 .p-accordion-header-link {
                   background-color: var(--secondaryBgColor);
                   color: var(--primaryColor);
                   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
                   border: 0;
                   border-radius: 8px;
+                  border: 2px solid var(--borderColor);
 
                   .pi {
                     position: absolute;
@@ -153,6 +158,7 @@
                 border: 0;
                 border-radius: 8px;
                 padding: 5px;
+                border: 2px solid var(--borderColor);
 
                 .darkMode__container {
                   display: flex;
@@ -162,6 +168,7 @@
                   background-color: var(--primaryBgColor);
                   border-radius: 8px;
                   padding: 10px 20px;
+                  border: 2px solid var(--borderColor);
                 }
               }
             }
@@ -173,6 +180,7 @@
               box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
               border-radius: 8px;
               cursor: pointer;
+              border: 2px solid var(--borderColor);
             }
           }
         }
