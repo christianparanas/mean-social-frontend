@@ -8,12 +8,14 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SearchComponent } from './pages/search/search.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'friends', component: FriendsComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'login', component: LoginComponent },

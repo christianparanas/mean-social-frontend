@@ -20,8 +20,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SearchComponent } from './pages/search/search.component';
+
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { PostaudienceComponent } from './components/postaudience/postaudience.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { PostaudienceComponent } from './components/postaudience/postaudience.co
     ProfileComponent,
     CreatepostComponent,
     PostaudienceComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
