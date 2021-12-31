@@ -4,9 +4,31 @@
   <app-createpost #createPost></app-createpost>
 
   <div class="home__container">
-    <button (click)="createPost.openCloseCreatePostModal()" pButton>
-      Create Post
-    </button>
+    <div class="createpost__container">
+      <div class="top">
+        <img routerLink="/profile" src="../../../../../assets/images/chan.jpg" alt="" />
+        <div
+          class="createPostBtn"
+          (click)="createPost.openCloseCreatePostModal()"
+        >
+          What's on your mind?
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="btn">
+          <i class="fal fa-user"></i>
+          Live
+        </div>
+        <div class="btn">
+          <i class="fal fa-user"></i>
+          Photo
+        </div>
+        <div class="btn">
+          <i class="fal fa-user"></i>
+          Room
+        </div>
+      </div>
+    </div>
 
     <div class="posts__container">
       <app-postcontainer
