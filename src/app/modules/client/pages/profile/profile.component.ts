@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { ProfileService } from '../../shared/services/profile.service';
 
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
   profileData: any = [];
   postsArr: any = new Array(3)
 
-  constructor(private profileService: ProfileService) {}
+  constructor(private profileService: ProfileService,  private location: Location) {}
 
   ngOnInit(): void {
     this.loadProfileData();
@@ -32,4 +33,8 @@ export class ProfileComponent implements OnInit {
       }
     );
   };
+
+  goBack() {
+    this.location.back();
+  }
 }

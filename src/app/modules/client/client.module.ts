@@ -24,6 +24,7 @@ import { SearchComponent } from './pages/search/search.component';
 
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { PostaudienceComponent } from './components/postaudience/postaudience.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { PostaudienceComponent } from './components/postaudience/postaudience.co
     CreatepostComponent,
     PostaudienceComponent,
     SearchComponent,
+    MessagesComponent,
   ],
   imports: [
     CommonModule,

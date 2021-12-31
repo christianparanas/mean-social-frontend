@@ -1,10 +1,10 @@
 <div class="profile__container">
   <div class="profile__wrapper">
     <div class="header">
-      <div class="gobackBtn" routerLink="/">
+      <div class="gobackBtn" (click)="goBack()">
         <i class="fal fa-arrow-left"></i>
       </div>
-      <input type="text" placeholder="Search" />
+      <input routerLink="/search" type="text" placeholder="Search" />
     </div>
 
     <div class="userData__container">

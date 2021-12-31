@@ -9,6 +9,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+
+
 
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -16,6 +19,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'friends', component: FriendsComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'messages', component: MessagesComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'login', component: LoginComponent },
