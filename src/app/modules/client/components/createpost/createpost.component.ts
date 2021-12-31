@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
 
 import { PostService } from '../../shared/services/post.service';
@@ -9,6 +9,7 @@ import { PostService } from '../../shared/services/post.service';
   styleUrls: ['./createpost.component.scss'],
 })
 export class CreatepostComponent implements OnInit {
+  @Output() postedEvent = new EventEmitter<string>();
   isCreatePostModalOpen: boolean = false;
   disablePostBtn: boolean = true;
 
@@ -46,10 +47,18 @@ export class CreatepostComponent implements OnInit {
           console.log(response);
           this.toast.success(response.message, { position: 'top-right' })
           this.openCloseCreatePostModal()
+          this.reloadPostOnPosted()
+
+          // clear input
+          this.postContent.textContent = ""
         },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  reloadPostOnPosted(): void {
+    this.postedEvent.emit();
   }
 }

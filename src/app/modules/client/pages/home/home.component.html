@@ -1,12 +1,16 @@
 <div class="home__main_container">
   <app-nav currentRoute="home"></app-nav>
 
-  <app-createpost #createPost></app-createpost>
+  <app-createpost (postedEvent)="loadPosts()" #createPost></app-createpost>
 
   <div class="home__container">
     <div class="createpost__container">
       <div class="top">
-        <img routerLink="/profile" src="../../../../../assets/images/chan.jpg" alt="" />
+        <img
+          routerLink="/profile"
+          src="../../../../../assets/images/chan.jpg"
+          alt=""
+        />
         <div
           class="createPostBtn"
           (click)="createPost.openCloseCreatePostModal()"
@@ -30,7 +34,10 @@
       </div>
     </div>
 
+    <div class="noPost" *ngIf="postsArray.length == 0"><h3>No Post(s)</h3></div>
+
     <div class="posts__container">
+
       <app-postcontainer
         *ngFor="let post of postsArray"
         [postArray]="post"

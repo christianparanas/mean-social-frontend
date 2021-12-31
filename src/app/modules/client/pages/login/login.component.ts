@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     const data = this.supabaseService.getUser;
 
     if (data == null) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     } else {
       this.thruProviderLoginData = {
         id: data?.id,

@@ -53,6 +53,16 @@
       }
     }
 
+    .noPost {
+      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+
+      h3 {
+        color: var(--primaryColor);
+      }
+    }
+
     .posts__container {
       margin-top: 20px;
       display: grid;
