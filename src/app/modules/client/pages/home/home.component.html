@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="noPost" *ngIf="postsArray.length == 0"><h3>No Post(s)</h3></div>
+    <div class="noPost" *ngIf="postsArray && postsArray.length == 0"><h3>No Post(s)</h3></div>
 
     <div class="noPost" *ngIf="postsArray == null"><h3>Something went wrong.</h3></div>
 

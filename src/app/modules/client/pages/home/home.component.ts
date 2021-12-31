@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.postService.getPosts().subscribe(
       (response: any) => {
         console.log(response);
+        
         this.postsArray = response.posts;
       },
       (error) => {
