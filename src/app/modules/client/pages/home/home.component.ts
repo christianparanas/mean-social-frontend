@@ -9,7 +9,7 @@ import { SupabaseService } from '../../shared/services/supabase.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  postsArray: any = new Array(4);
+  postsArray: any = new Array(3);
 
   constructor(
     private postService: PostService,

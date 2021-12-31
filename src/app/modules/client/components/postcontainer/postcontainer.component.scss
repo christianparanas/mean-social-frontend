@@ -1,8 +1,7 @@
-
 .postcontainer__main_container {
   background: var(--primaryBgColor);
   color: var(--primaryColor);
-  
+
   border-bottom: 1px solid var(--borderColor);
   border-top: 1px solid var(--borderColor);
 
@@ -14,7 +13,6 @@
     padding: 15px 15px 0;
 
     .post_user_image__container {
-
       img {
         width: 40px;
         height: 40px;
@@ -29,7 +27,6 @@
       justify-content: space-between;
 
       .post_details__wrapper {
-
         .post_dateposted_privacy__container {
           display: flex;
           font-size: 12px;
@@ -43,15 +40,15 @@
 
       ::ng-deep .p-tieredmenu {
         background-color: var(--primaryBgColor);
-        
+
         .p-menuitem-link {
-          .p-menuitem-icon, .p-menuitem-text {
+          .p-menuitem-icon,
+          .p-menuitem-text {
             color: var(--primaryColor);
           }
 
           &:hover {
             background-color: var(--secondaryBgColor);
-
           }
         }
       }
@@ -142,5 +139,26 @@
         }
       }
     }
+  }
+}
+
+.post_skeleton__container {
+  padding: 10px;
+  background-color: var(--primaryBgColor);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 10px;
+
+  ::ng-deep .skel_3 {
+    grid-column: 1 / span 2;
+  }
+
+  ::ng-deep .skel_2 {
+    margin-top: 10px;
+    width: 150px;
+  }
+
+  ::ng-deep .skel.p-skeleton {
+    background-color: var(--secondaryBgColor);
   }
 }
