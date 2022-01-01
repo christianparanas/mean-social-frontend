@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
+import { EventsService } from '../../shared/services/events.service';
 
 import { PostService } from '../../shared/services/post.service';
 
@@ -23,10 +24,15 @@ export class CreatepostComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private eventsService: EventsService
   ) {}
 
   ngOnInit(): void {}
+
+  sendNewPostIndicator() {
+    this.eventsService.sendNewPostIndicator()
+  }
 
   openCloseCreatePostModal() {
     this.isCreatePostModalOpen = !this.isCreatePostModalOpen;
@@ -67,6 +73,8 @@ export class CreatepostComponent implements OnInit {
           this.postContent.textContent = '';
           this.isPosting = false;
           this.isPostingLabel = 'Post';
+
+          this.sendNewPostIndicator()
         },
         (error) => {
           console.log(error);
