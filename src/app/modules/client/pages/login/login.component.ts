@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
         this.toast.success('Logged In!', { position: 'top-right' });
 
         this.authService.setSession(response);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
         this.formSubmitLoading = false;
       },
       (error) => {

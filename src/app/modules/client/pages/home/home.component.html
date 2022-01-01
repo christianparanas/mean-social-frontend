@@ -4,6 +4,10 @@
   <app-createpost (postedEvent)="loadPosts()" #createPost></app-createpost>
 
   <div class="home__container">
+    <div class="newPostIndicator__container" *ngIf="showNewPostIndicator"> 
+      <div class="btn">Load new post(s) - <span (click)="loadPosts()">click here</span></div>
+    </div>
+
     <div class="createpost__container">
       <div class="top">
         <img

@@ -3,10 +3,11 @@ import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class EventsService {
-  constructor(private socket: Socket) {}
+
+  constructor(private socket: Socket) { }
 
   sendNewPostIndicator() {
     this.socket.emit('newPost');
