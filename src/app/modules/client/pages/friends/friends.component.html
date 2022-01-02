@@ -2,12 +2,23 @@
   <app-nav currentRoute="friends"></app-nav>
 
   <div class="friends__container">
-
     <div class="user" *ngFor="let user of usersArray">
-      <img [src]="user.image != null ? user.image : '../../../../../assets/images/chan.jpg'" alt="">
+      <img
+        [src]="
+          user.image != null
+            ? user.image
+            : '../../../../../assets/images/chan.jpg'
+        "
+        alt=""
+      />
       <div class="details">
         <h4>{{ user.name }}</h4>
         <p>{{ user.email }}</p>
+      </div>
+
+      <div class="status">
+        <div class="" *ngIf="user.isOnline == 'true'">Online</div>
+        <div class="" *ngIf="user.isOnline != 'true'">offline</div>
       </div>
     </div>
   </div>

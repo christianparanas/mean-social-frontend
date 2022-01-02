@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../../shared/services/events.service';
 
 // import service
 import { FriendService } from '../../shared/services/friend.service';
@@ -11,10 +12,19 @@ import { FriendService } from '../../shared/services/friend.service';
 export class FriendsComponent implements OnInit {
   usersArray: any = []
 
-  constructor(private friendService: FriendService) { }
+  constructor(private friendService: FriendService, private eventsService: EventsService) { }
 
   ngOnInit(): void {
     this.loadUsers()
+    this.getUserPresence()
+  }
+
+  getUserPresence() {
+    this.eventsService.getUserPresence().subscribe(
+      (res) => {
+        this.loadUsers()
+      }
+    )
   }
 
   loadUsers() {

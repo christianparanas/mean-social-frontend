@@ -20,5 +20,9 @@ export class EventsService {
 
   sendUserOnlineIndicator(data: any) {
     this.socket.emit('userOnline', data)
-  }  
+  }
+
+  getUserPresence(): Observable<string> {
+    return this.socket.fromEvent<string>('userChangeStatus');
+  }
 }
