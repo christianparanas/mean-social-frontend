@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { ProfileService } from '../../shared/services/profile.service';
+import { EventsService } from '../../shared/services/events.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +13,12 @@ export class ProfileComponent implements OnInit {
   profileData: any = [];
   postsArr: any = new Array(3)
 
-  constructor(private profileService: ProfileService,  private location: Location) {}
+  constructor(private profileService: ProfileService,  private location: Location, private eventsService: EventsService) {}
 
-  ngOnInit(): void {
-    this.loadProfileData();
+  ngOnInit() {
+  this.loadProfileData();
+
+    
   }
 
   loadProfileData = () => {
@@ -23,6 +26,8 @@ export class ProfileComponent implements OnInit {
       (response: any) => {
         this.profileData = (({ posts, ...o }) => o)(response)
         this.postsArr = response.posts
+
+        this.eventsService.sendUserOnlineIndicator(this.profileData.id)
 
         console.log(this.profileData);
         console.log(this.postsArr);

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     this.loadUser();
 
     this.getNewPostIndicator();
+    
   }
 
   getNewPostIndicator() {

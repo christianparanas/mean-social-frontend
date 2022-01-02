@@ -6,6 +6,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 // services
 import { AuthService } from '../../shared/services/auth.service';
 import { SupabaseService } from '../../shared/services/supabase.service';
+import { EventsService } from '../../shared/services/events.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private toast: HotToastService,
-    private supabaseService: SupabaseService
+    private supabaseService: SupabaseService,
+    private eventsService: EventsService
   ) {
     this.initializeForm();
   }
@@ -111,6 +113,7 @@ export class LoginComponent implements OnInit {
         this.authService.setSession(response);
         this.router.navigate(['/']);
         this.formSubmitLoading = false;
+
       },
       (error) => {
         this.formSubmitLoading = false;
