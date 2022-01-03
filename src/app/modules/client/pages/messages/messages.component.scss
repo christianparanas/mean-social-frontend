@@ -4,9 +4,15 @@
   min-height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
   color: var(--primaryColor);
 
   .customer_mgs__wrapper {
+    width: 100%;
+    position: relative;
+    width: inherit;
+    overflow: auto;
+
     .header {
       display: flex;
       border-bottom: 2px solid var(--borderColor);
@@ -35,14 +41,52 @@
       box-shadow: 0 4px 4px 0 RGB(43 80 237 / 20%);
     }
 
+    .chatheads__container {
+      width: 100%;
+      overflow-x: scroll;
+      display: flex;
+      padding: 70px 0 10px 20px;
+
+      .friend_chathead__container {
+        display: grid;
+        width: fit-content;
+        margin-right: 15px;
+        text-align: center;
+        position: relative;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .onlineIndicator {
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background: rgb(24, 238, 149);
+          border-radius: 50%;
+          border: 2px solid var(--borderColor);
+          top: 32px;
+          left: 28px;
+        }
+
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+
     .contentMsgs {
-      padding-top: 56px;
       z-index: 9;
+      width: 100%;
 
       .searchMsg {
         .wrapper {
           padding: 15px;
           position: relative;
+          width: 100%;
 
           input {
             width: 100%;
@@ -79,27 +123,27 @@
           grid-template-columns: 50px 1fr 60px;
           align-items: center;
           background-color: var(--primaryBgColor);
-  
+
           img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
           }
-  
+
           .details {
             padding-left: 10px;
-  
+
             .name {
               font-size: 14px;
               margin-bottom: 5px;
             }
-  
+
             .latestMsg {
               font-size: 12px;
               color: grey;
             }
           }
-  
+
           .date {
             font-size: 12px;
             color: grey;
@@ -121,15 +165,14 @@
     height: 100vh;
     z-index: 1000;
     overflow-y: scroll;
-    overflow-x:hidden;
-
+    overflow-x: hidden;
 
     .header1 {
       display: flex;
       justify-content: space-between;
       border: 2px solid var(--borderColor);
       background-color: var(--primaryBgColor);
-    color: var(--primaryColor);
+      color: var(--primaryColor);
       padding: 10px 20px 10px 15px;
       align-items: center;
       height: 55px;
@@ -201,7 +244,8 @@
         grid-gap: 10px;
         align-items: center;
 
-        .openMoreActions_btn, .sendMsg_btn {
+        .openMoreActions_btn,
+        .sendMsg_btn {
           display: flex;
           justify-content: center;
           color: var(--primary-color);
@@ -224,12 +268,11 @@
       width: 100%;
 
       .spec_msg_wrapper {
-        padding: 15px 15px ;
+        padding: 15px 15px;
 
         .bottomscroll {
           margin-bottom: 30px;
         }
-
 
         .msg {
           cursor: pointer;
@@ -270,7 +313,7 @@
 
           p {
             width: fit-content;
-            max-width: 100%;;
+            max-width: 100%;
             background-color: var(--primary-color);
             color: var(--primaryColor);
             grid-column-start: 2;
@@ -282,7 +325,7 @@
   }
 }
 
-@media only screen and (min-width: 999px) { 
+@media only screen and (min-width: 999px) {
   .customer_msgs__main_container {
     background: #fff;
     height: 100%;
@@ -299,10 +342,9 @@
       img {
         width: 400px;
         height: 400px;
-
       }
     }
-  
+
     .customer_mgs__wrapper {
       border-right: 1px solid #e3e3e3;
       position: relative;
@@ -322,33 +364,32 @@
         width: 400px;
         z-index: 10;
         border-right: 1px solid #e3e3e3;
-  
+
         .backBtn {
           i {
             padding: 10px;
             cursor: pointer;
           }
         }
-  
+
         .chatsIcon {
           margin-left: 10px;
         }
       }
-  
+
       .header__scrollShadow {
         box-shadow: 0 4px 4px 0 RGB(43 80 237 / 20%);
       }
 
-  
       .contentMsgs {
         padding-top: 56px;
         z-index: 9;
-  
+
         .searchMsg {
           .wrapper {
             padding: 20px;
             position: relative;
-  
+
             input {
               width: 100%;
               background: #f7f7f7;
@@ -357,12 +398,12 @@
               border-radius: 20px;
               outline: 0;
               border: 0;
-  
+
               &::placeholder {
                 color: grey;
               }
             }
-  
+
             i {
               position: absolute;
               top: 33px;
@@ -371,7 +412,7 @@
             }
           }
         }
-  
+
         .msg {
           padding: 10px 20px;
           display: grid;
@@ -379,27 +420,27 @@
           align-items: center;
           cursor: pointer;
           // border-bottom: 1px solid #e3e3e3;
-  
+
           img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
           }
-  
+
           .details {
             padding-left: 10px;
-  
+
             .name {
               font-size: 14px;
               margin-bottom: 5px;
             }
-  
+
             .latestMsg {
               font-size: 12px;
               color: #0000007d;
             }
           }
-  
+
           .date {
             font-size: 12px;
             color: #0000007d;
@@ -420,7 +461,7 @@
       height: 100vh;
       z-index: 1000;
       overflow-y: hidden;
-      overflow-x:hidden;
+      overflow-x: hidden;
 
       .header1 {
         display: flex;
@@ -499,7 +540,8 @@
           grid-gap: 10px;
           align-items: center;
 
-          .openMoreActions_btn, .sendMsg_btn {
+          .openMoreActions_btn,
+          .sendMsg_btn {
             display: flex;
             justify-content: center;
             color: #fa6238;
@@ -521,28 +563,25 @@
         overflow: auto;
         width: 100%;
         height: 100vh;
-        
 
         .spec_msg_wrapper {
-          padding: 15px 15px ;
-
+          padding: 15px 15px;
 
           .bottomscroll {
             margin-bottom: 30px;
           }
 
-
           .msg {
             cursor: pointer;
-          display: grid;
-          grid-template-columns: 40px 1fr;
-          max-width: 80%;
-          grid-gap: 10px;
-          width: fit-content;
-          margin-bottom: 10px;
-          align-items: center;
-          font-size: 13px;
-          word-break: break-all;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            max-width: 80%;
+            grid-gap: 10px;
+            width: fit-content;
+            margin-bottom: 10px;
+            align-items: center;
+            font-size: 13px;
+            word-break: break-all;
 
             img {
               width: 40px;
@@ -563,14 +602,14 @@
             width: 100%;
             display: grid;
             grid-template-columns: 100px 1fr;
-  
+
             img {
               display: none;
             }
-  
+
             p {
               width: fit-content;
-              max-width: 100%;;
+              max-width: 100%;
               background: #fa6238;
               color: #fff;
               grid-column-start: 2;

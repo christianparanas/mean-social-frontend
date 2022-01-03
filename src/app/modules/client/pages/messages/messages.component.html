@@ -8,6 +8,25 @@
       <div class=""></div>
     </div>
 
+    <div class="chatheads__container">
+      <div
+        class="friend_chathead__container"
+        *ngFor="let friend of friendsArr"
+        (click)="openSpecificMsg(friend)"
+      >
+        <img
+          [src]="
+            friend.image != null
+              ? friend.image
+              : '../../../../../assets/images/chan.jpg'
+          "
+          alt=""
+        />
+        <div *ngIf="friend.isOnline == 'true'" class="onlineIndicator"></div>
+        <p>{{ friend.name }}</p>
+      </div>
+    </div>
+
     <div class="contentMsgs">
       <div class="noMsg" *ngIf="mgsArr.length == 0">
         <img src="../../../assets/imgs/noMsgs.png" alt="" />
@@ -23,23 +42,23 @@
 
       <div class="messages__container">
         <a
-        class="msg"
-        *ngFor="let msg of mgsArr"
-        (click)="openSpecificMsg(msg.msgID)"
-      >
-        <img [src]="msg.imgURL" alt="" />
-        <div class="details">
-          <div class="name">{{ msg.name }}</div>
-          <div class="latestMsg">
-            {{
-              msg.latestMsg.length > 15
-                ? msg.latestMsg.substring(0, 15) + " ..."
-                : msg.latestMsg
-            }}
+          class="msg"
+          *ngFor="let msg of mgsArr"
+          (click)="openSpecificMsg(msg.msgID)"
+        >
+          <img [src]="msg.imgURL" alt="" />
+          <div class="details">
+            <div class="name">{{ msg.name }}</div>
+            <div class="latestMsg">
+              {{
+                msg.latestMsg.length > 15
+                  ? msg.latestMsg.substring(0, 15) + " ..."
+                  : msg.latestMsg
+              }}
+            </div>
           </div>
-        </div>
-        <div class="date">{{ msg.dateOrTime }}</div>
-      </a>
+          <div class="date">{{ msg.dateOrTime }}</div>
+        </a>
       </div>
     </div>
   </div>
@@ -61,7 +80,7 @@
           />
           <div class="online_indicator"></div>
           <div class="details">
-            <div class="name">Chris Chan</div>
+            <div class="name">{{ specificMsg.username }}</div>
             <div class="status">Active now</div>
           </div>
         </div>
@@ -76,7 +95,7 @@
         <div
           class="msg"
           *ngFor="let msg of specificMsgs"
-          [ngClass]="{ ownMessage: msg.userId == currentUser.userId }"
+          [ngClass]="{ ownMessage: msg.senderId == currentUser.userId }"
         >
           <img [src]="msg.userImage" alt="" />
           <p>{{ msg.userMessage }}</p>

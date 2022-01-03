@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ChatService } from '../../shared/services/chat.service';
 import { ProfileService } from '../../shared/services/profile.service';
+import { FriendService } from '../../shared/services/friend.service';
+import { EventsService } from '../../shared/services/events.service';
 
 @Component({
   selector: 'app-messages',
@@ -14,11 +16,17 @@ export class MessagesComponent implements OnInit {
   userMessage: any;
   openMsg: boolean = false;
   msgId: number;
+  friendsArr: any = []
 
   currentUser = {
     userId: null,
     username: '',
   };
+
+  specificMsg = {
+    userId: null,
+    username: null
+  }
 
   @ViewChild('btnScroll') scrollEl: any;
 
@@ -32,24 +40,22 @@ export class MessagesComponent implements OnInit {
     },
   ];
 
-  specificMsgs: any = [
-    {
-      userId: 1,
-      username: 'thea',
-      userMessage: 'Hain na an at mga saad?',
-      userImage: '../../../../../assets/images/chan.jpg',
-    },
-  ];
+  specificMsgs: any = [];
 
   constructor(
     private location: Location,
     private chatService: ChatService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private friendService: FriendService,
+    private eventsService: EventsService
   ) {}
 
   ngOnInit() {
     window.addEventListener('scroll', this.listenScrollEvent);
     this.getCurrentUserData();
+    this.loadFriends()
+    this.getUserPresence()
+    this.loadUserMsgs()
   }
 
   getCurrentUserData() {
@@ -64,11 +70,30 @@ export class MessagesComponent implements OnInit {
     );
   }
 
+  getUserPresence() {
+    this.eventsService.getUserPresence().subscribe(
+      (res) => {
+        this.loadFriends()
+      }
+    )
+  }
+
+  loadUserMsgs() {
+    this.chatService.getUserMsgs().subscribe(
+      (response) => {
+        console.log(response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
   loadSpecificMessages() {
     return this.chatService.getMessages().subscribe((messageData: any) => {
       this.specificMsgs.push({
         userMessage: messageData.message,
-        userId: messageData.userId,
+        senderId: messageData.sender,
       });
 
       console.log(this.specificMsgs);
@@ -77,8 +102,10 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  openSpecificMsg(msgID: number) {
-    this.msgId = msgID;
+  openSpecificMsg(data: any) {
+    this.specificMsg.userId = data.id
+    this.specificMsg.username = data.name
+
     this.openMsg = true;
 
     // load user messages
@@ -91,12 +118,25 @@ export class MessagesComponent implements OnInit {
     if (this.userMessage) {
       this.chatService.sendMessage({
         message: this.userMessage,
-        userId: this.currentUser.userId,
+        sender: this.currentUser.userId,
+        reciever: this.specificMsg.userId
       });
 
       this.userMessage = '';
       this.testScroll();
     }
+  }
+
+  loadFriends() {
+    this.friendService.getUsers().subscribe(
+      (response: any) => {
+        console.log(response)
+        this.friendsArr = response.users
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   goBack() {
