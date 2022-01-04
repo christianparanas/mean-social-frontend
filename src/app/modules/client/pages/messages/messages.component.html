@@ -28,7 +28,7 @@
     </div>
 
     <div class="contentMsgs">
-      <div class="noMsg" *ngIf="mgsArr.length == 0">
+      <div class="noMsg" *ngIf="mgsArr && mgsArr.length == 0">
         <img src="../../../assets/imgs/noMsgs.png" alt="" />
         <p>No Messages</p>
       </div>
@@ -46,7 +46,8 @@
           *ngFor="let msg of mgsArr"
           (click)="openSpecificMsg(msg.msgID)"
         >
-          <img [src]="msg.imgURL" alt="" />
+        chan
+          <!-- <img [src]="msg.imgURL" alt="" />
           <div class="details">
             <div class="name">{{ msg.name }}</div>
             <div class="latestMsg">
@@ -57,7 +58,7 @@
               }}
             </div>
           </div>
-          <div class="date">{{ msg.dateOrTime }}</div>
+          <div class="date">{{ msg.dateOrTime }}</div> -->
         </a>
       </div>
     </div>

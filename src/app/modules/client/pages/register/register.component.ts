@@ -23,7 +23,9 @@ export class RegisterComponent implements OnInit {
     this.initializeForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkIfLoggedIn()
+  }
 
   initializeForm() {
     this.registerForm = new FormGroup({
@@ -31,6 +33,12 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
+  }
+
+  checkIfLoggedIn() {
+    if(!this.authService.isLoggedIn()) return
+
+    this.router.navigate(['/']);
   }
 
   onSubmit() {

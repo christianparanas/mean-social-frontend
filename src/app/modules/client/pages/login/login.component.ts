@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.checkIfLoggedIn()
+
     this.route.queryParamMap.subscribe(
       (params: any) => (this.isProvider = params.params)
     );
@@ -92,6 +94,12 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
+  }
+
+  checkIfLoggedIn() {
+    if(!this.authService.isLoggedIn()) return
+
+    this.router.navigate(['/']);
   }
 
   onSubmit(provider: any, data?: any) {

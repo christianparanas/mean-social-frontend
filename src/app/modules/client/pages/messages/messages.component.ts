@@ -5,6 +5,7 @@ import { ChatService } from '../../shared/services/chat.service';
 import { ProfileService } from '../../shared/services/profile.service';
 import { FriendService } from '../../shared/services/friend.service';
 import { EventsService } from '../../shared/services/events.service';
+import { TYPED_NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-messages',
@@ -30,15 +31,7 @@ export class MessagesComponent implements OnInit {
 
   @ViewChild('btnScroll') scrollEl: any;
 
-  mgsArr = [
-    {
-      name: 'Luigi Loreno',
-      latestMsg: 'Ano kuno?',
-      dateOrTime: '10:01 AM',
-      imgURL: '../../../../../assets/images/chan.jpg',
-      msgID: 1,
-    },
-  ];
+  mgsArr: any = [];
 
   specificMsgs: any = [];
 
@@ -80,7 +73,9 @@ export class MessagesComponent implements OnInit {
 
   loadUserMsgs() {
     this.chatService.getUserMsgs().subscribe(
-      (response) => {
+      (response: any) => {
+        this.mgsArr = response.messages
+
         console.log(response)
       },
       (error) => {
@@ -119,7 +114,8 @@ export class MessagesComponent implements OnInit {
       this.chatService.sendMessage({
         message: this.userMessage,
         sender: this.currentUser.userId,
-        reciever: this.specificMsg.userId
+        reciever: this.specificMsg.userId,
+        roomId: null
       });
 
       this.userMessage = '';

@@ -11,17 +11,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 
-
-
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'friends', component: FriendsComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'messages', component: MessagesComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'notifications', component: NotificationsComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'friends', component: FriendsComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
+  { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
