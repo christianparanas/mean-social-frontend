@@ -27,6 +27,7 @@ export class MessagesComponent implements OnInit {
   specificMsg = {
     userId: null,
     username: null
+    roomId: null
   }
 
   @ViewChild('btnScroll') scrollEl: any;
@@ -97,15 +98,21 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  openSpecificMsg(data: any) {
-    this.specificMsg.userId = data.id
-    this.specificMsg.username = data.name
+  openSpecificMsg(num: number, data: any) {
+    if(num == 1) {
+      this.specificMsg.userId = data.id
+      this.specificMsg.username = data.name
+    }
+    else {
+      this.specificMsg.userId = data.user.id
+      this.specificMsg.username = data.user.name
+      this.specificMsg.roomId = data.messageRoom.id
+    }
 
     this.openMsg = true;
 
     // load user messages
     this.loadSpecificMessages();
-
     this.scrollToBottom();
   }
 
@@ -115,7 +122,7 @@ export class MessagesComponent implements OnInit {
         message: this.userMessage,
         sender: this.currentUser.userId,
         reciever: this.specificMsg.userId,
-        roomId: null
+        roomId: this.specificMsg.roomId
       });
 
       this.userMessage = '';

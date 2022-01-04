@@ -12,7 +12,7 @@
       <div
         class="friend_chathead__container"
         *ngFor="let friend of friendsArr"
-        (click)="openSpecificMsg(friend)"
+        (click)="openSpecificMsg(1, friend)"
       >
         <img
           [src]="
@@ -44,21 +44,28 @@
         <a
           class="msg"
           *ngFor="let msg of mgsArr"
-          (click)="openSpecificMsg(msg.msgID)"
+          (click)="openSpecificMsg(2, msg)"
         >
-        chan
-          <!-- <img [src]="msg.imgURL" alt="" />
+          <img
+            [src]="
+              msg.user.image != null
+                ? msg.user.image
+                : '../../../../../assets/images/chan.jpg'
+            "
+            alt=""
+          />
           <div class="details">
-            <div class="name">{{ msg.name }}</div>
+            <div class="name">{{ msg.user.name }}</div>
             <div class="latestMsg">
-              {{
+              hello
+              <!-- {{
                 msg.latestMsg.length > 15
                   ? msg.latestMsg.substring(0, 15) + " ..."
                   : msg.latestMsg
-              }}
+              }} -->
             </div>
           </div>
-          <div class="date">{{ msg.dateOrTime }}</div> -->
+          <div class="date">1am</div>
         </a>
       </div>
     </div>
