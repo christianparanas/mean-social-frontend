@@ -26,7 +26,7 @@ export class MessagesComponent implements OnInit {
 
   specificMsg = {
     userId: null,
-    username: null
+    username: null,
     roomId: null
   }
 
@@ -50,6 +50,8 @@ export class MessagesComponent implements OnInit {
     this.loadFriends()
     this.getUserPresence()
     this.loadUserMsgs()
+
+    this.loadChatFriends()
   }
 
   getCurrentUserData() {
@@ -135,6 +137,17 @@ export class MessagesComponent implements OnInit {
       (response: any) => {
         console.log(response)
         this.friendsArr = response.users
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
+  loadChatFriends() {
+    this.friendService.getUserChats().subscribe(
+      (response: any) => {
+        console.log(response)
       },
       (error) => {
         console.log(error)

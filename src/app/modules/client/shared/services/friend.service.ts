@@ -15,4 +15,8 @@ export class FriendService {
   getUsers() {
     return this.http.get(`${baseURL}/api/users`);
   }
+
+  getUserChats() {
+    return this.http.get(`${baseURL}/api/users/chats`);
+  }
 }
