@@ -11,23 +11,25 @@ import { EventsService } from '../../shared/services/events.service';
 })
 export class ProfileComponent implements OnInit {
   profileData: any = [];
-  postsArr: any = new Array(3)
+  postsArr: any = new Array(3);
 
-  constructor(private profileService: ProfileService,  private location: Location, private eventsService: EventsService) {}
+  constructor(
+    private profileService: ProfileService,
+    private location: Location,
+    private eventsService: EventsService
+  ) {}
 
   ngOnInit() {
-  this.loadProfileData();
-
-    
+    this.loadProfileData();
   }
 
   loadProfileData = () => {
     this.profileService.getProfileData().subscribe(
       (response: any) => {
-        this.profileData = (({ posts, ...o }) => o)(response)
-        this.postsArr = response.posts
+        this.profileData = (({ posts, ...o }) => o)(response);
+        this.postsArr = response.posts;
 
-        this.eventsService.sendUserOnlineIndicator(this.profileData.id)
+        this.eventsService.sendUserOnlineIndicator(this.profileData.id);
 
         console.log(this.profileData);
         console.log(this.postsArr);

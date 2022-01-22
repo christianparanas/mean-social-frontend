@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkIfLoggedIn()
+    this.checkIfLoggedIn();
   }
 
   initializeForm() {
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   checkIfLoggedIn() {
-    if(!this.authService.isLoggedIn()) return
+    if (!this.authService.isLoggedIn()) return;
 
     this.router.navigate(['/']);
   }

@@ -17,7 +17,7 @@ export class MessagesComponent implements OnInit {
   userMessage: any;
   openMsg: boolean = false;
   msgId: number;
-  friendsArr: any = []
+  friendsArr: any = [];
 
   currentUser = {
     userId: null,
@@ -27,8 +27,8 @@ export class MessagesComponent implements OnInit {
   specificMsg = {
     userId: null,
     username: null,
-    roomId: null
-  }
+    roomId: null,
+  };
 
   @ViewChild('btnScroll') scrollEl: any;
 
@@ -47,11 +47,11 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     window.addEventListener('scroll', this.listenScrollEvent);
     this.getCurrentUserData();
-    this.loadFriends()
-    this.getUserPresence()
-    this.loadUserMsgs()
+    this.loadFriends();
+    this.getUserPresence();
+    this.loadUserMsgs();
 
-    this.loadChatFriends()
+    this.loadChatFriends();
   }
 
   getCurrentUserData() {
@@ -67,24 +67,22 @@ export class MessagesComponent implements OnInit {
   }
 
   getUserPresence() {
-    this.eventsService.getUserPresence().subscribe(
-      (res) => {
-        this.loadFriends()
-      }
-    )
+    this.eventsService.getUserPresence().subscribe((res) => {
+      this.loadFriends();
+    });
   }
 
   loadUserMsgs() {
     this.chatService.getUserMsgs().subscribe(
       (response: any) => {
-        this.mgsArr = response.messages
+        // this.mgsArr = response.messages
 
-        console.log(response)
+        console.log(response);
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
   }
 
   loadSpecificMessages() {
@@ -101,14 +99,13 @@ export class MessagesComponent implements OnInit {
   }
 
   openSpecificMsg(num: number, data: any) {
-    if(num == 1) {
-      this.specificMsg.userId = data.id
-      this.specificMsg.username = data.name
-    }
-    else {
-      this.specificMsg.userId = data.user.id
-      this.specificMsg.username = data.user.name
-      this.specificMsg.roomId = data.messageRoom.id
+    if (num == 1) {
+      this.specificMsg.userId = data.id;
+      this.specificMsg.username = data.name;
+    } else {
+      this.specificMsg.userId = data.user.id;
+      this.specificMsg.username = data.user.name;
+      this.specificMsg.roomId = data.messageRoom.id;
     }
 
     this.openMsg = true;
@@ -124,7 +121,7 @@ export class MessagesComponent implements OnInit {
         message: this.userMessage,
         sender: this.currentUser.userId,
         reciever: this.specificMsg.userId,
-        roomId: this.specificMsg.roomId
+        roomId: this.specificMsg.roomId,
       });
 
       this.userMessage = '';
@@ -135,24 +132,21 @@ export class MessagesComponent implements OnInit {
   loadFriends() {
     this.friendService.getUsers().subscribe(
       (response: any) => {
-        console.log(response)
-        this.friendsArr = response.users
+        this.friendsArr = response.users;
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
   }
 
   loadChatFriends() {
     this.friendService.getUserChats().subscribe(
-      (response: any) => {
-        console.log(response)
-      },
+      (response: any) => {},
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
   }
 
   goBack() {

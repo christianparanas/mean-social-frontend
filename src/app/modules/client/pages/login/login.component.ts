@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.checkIfLoggedIn()
+    this.checkIfLoggedIn();
 
     this.route.queryParamMap.subscribe(
       (params: any) => (this.isProvider = params.params)
@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkIfLoggedIn() {
-    if(!this.authService.isLoggedIn()) return
+    if (!this.authService.isLoggedIn()) return;
 
     this.router.navigate(['/']);
   }
@@ -121,7 +121,6 @@ export class LoginComponent implements OnInit {
         this.authService.setSession(response);
         this.router.navigate(['/']);
         this.formSubmitLoading = false;
-
       },
       (error) => {
         this.formSubmitLoading = false;
