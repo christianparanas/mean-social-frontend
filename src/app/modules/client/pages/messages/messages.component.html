@@ -28,7 +28,7 @@
     </div>
 
     <div class="contentMsgs">
-      <div class="noMsg" *ngIf="mgsArr && mgsArr.length == 0">
+      <div class="noMsg" *ngIf="chatsArr && chatsArr.length == 0">
         <img src="../../../assets/imgs/noMsgs.png" alt="" />
         <p>No Messages</p>
       </div>
@@ -43,19 +43,24 @@
       <div class="messages__container">
         <a
           class="msg"
-          *ngFor="let msg of mgsArr"
-          (click)="openSpecificMsg(2, msg)"
+          *ngFor="let chat of chatsArr"
+          (click)="openSpecificMsg(2, chat)"
         >
           <img
             [src]="
-              msg.user.image != null
-                ? msg.user.image
-                : '../../../../../assets/images/chan.jpg'
+            chat.sender.id == currentUser.userId
+                ? chat.sender.image != null
+                  ? chat.sender.image
+                  : defaultImgLink
+                : chat.receiver.image != null
+                ? chat.receiver.image
+                : defaultImgLink
             "
             alt=""
           />
+
           <div class="details">
-            <div class="name">{{ msg.user.name }}</div>
+            <div class="name">{{ chat.sender.id != currentUser.userId ? chat.sender.name : chat.receiver.name }}</div>
             <div class="latestMsg">
               hello
               <!-- {{
@@ -71,15 +76,15 @@
     </div>
   </div>
 
-  <div *ngIf="!openMsg" class="noSelectedMsg">
+  <div *ngIf="!isConvoOpen" class="noSelectedMsg">
     <img src="../../../assets/imgs/msgImg.png" alt="" />
   </div>
 
-  <div *ngIf="openMsg" class="contentMsg">
+  <div *ngIf="isConvoOpen" class="contentMsg">
     <div class="header1">
       <div class="box">
         <div class="backBtn">
-          <i (click)="openMsg = false" class="fal fa-arrow-left"></i>
+          <i (click)="closeConvoPanel()" class="fal fa-arrow-left"></i>
         </div>
         <div class="chatUser">
           <img
@@ -102,11 +107,11 @@
       <div class="spec_msg_wrapper">
         <div
           class="msg"
-          *ngFor="let msg of specificMsgs"
-          [ngClass]="{ ownMessage: msg.senderId == currentUser.userId }"
+          *ngFor="let convo of convoArr"
+          [ngClass]="{ ownMessage: convo.sender.id == currentUser.userId }"
         >
-          <img [src]="msg.userImage" alt="" />
-          <p>{{ msg.userMessage }}</p>
+          <img [src]="convo.userImage" alt="" />
+          <p>{{ convo.text }}</p>
         </div>
         <div class="bottomscroll" #btnScroll></div>
       </div>
@@ -120,7 +125,7 @@
         <input
           type="text"
           placeholder="Send message"
-          [(ngModel)]="userMessage"
+          [(ngModel)]="typedMessage"
           #msgInput
           (click)="testScroll()"
           (focus)="testScroll()"

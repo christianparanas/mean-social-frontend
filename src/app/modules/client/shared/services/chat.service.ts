@@ -20,6 +20,14 @@ export class ChatService {
     return this.socket.fromEvent<string>('newMsg');
   }
 
+  getConvo(convoId: any) {
+    const data = {
+      id: convoId
+    }
+
+    return this.http.post(`${baseURL}/api/chats/convo`, data)
+  }
+
   getUserMsgs() {
     return this.http.get(`${baseURL}/api/chats`);
   }

@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
 import { ChatService } from '../../shared/services/chat.service';
 import { ProfileService } from '../../shared/services/profile.service';
 import { FriendService } from '../../shared/services/friend.service';
 import { EventsService } from '../../shared/services/events.service';
-import { TYPED_NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-messages',
@@ -14,10 +12,12 @@ import { TYPED_NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MessagesComponent implements OnInit {
   onScroll: boolean = false;
-  userMessage: any;
-  openMsg: boolean = false;
-  msgId: number;
+  isConvoOpen: boolean = false;
+
+  typedMessage: any;
   friendsArr: any = [];
+  convoArr: any = []
+  chatsArr: any = [];
 
   currentUser = {
     userId: null,
@@ -27,14 +27,14 @@ export class MessagesComponent implements OnInit {
   specificMsg = {
     userId: null,
     username: null,
-    roomId: null,
+    convoId: null,
   };
+
+  defaultImgLink = '../../../../../assets/images/chan.jpg';
 
   @ViewChild('btnScroll') scrollEl: any;
 
-  mgsArr: any = [];
 
-  specificMsgs: any = [];
 
   constructor(
     private location: Location,
@@ -50,15 +50,12 @@ export class MessagesComponent implements OnInit {
     this.loadFriends();
     this.getUserPresence();
     this.loadUserMsgs();
-
     this.loadChatFriends();
   }
 
   getCurrentUserData() {
     this.profileService.getProfileData().subscribe(
       (response: any) => {
-        console.log(response);
-
         this.currentUser.userId = response.id;
         this.currentUser.username = response.name;
       },
@@ -75,9 +72,7 @@ export class MessagesComponent implements OnInit {
   loadUserMsgs() {
     this.chatService.getUserMsgs().subscribe(
       (response: any) => {
-        // this.mgsArr = response.messages
-
-        console.log(response);
+        this.chatsArr = response.messages;
       },
       (error) => {
         console.log(error);
@@ -85,17 +80,34 @@ export class MessagesComponent implements OnInit {
     );
   }
 
-  loadSpecificMessages() {
-    return this.chatService.getMessages().subscribe((messageData: any) => {
-      this.specificMsgs.push({
-        userMessage: messageData.message,
-        senderId: messageData.sender,
-      });
+  loadSpecificMessages(convoId: any) {
 
-      console.log(this.specificMsgs);
+    return this.chatService.getConvo(convoId).subscribe(
+      (response: any) => {
+        
+        this.convoArr = response.convo
+        console.log(this.convoArr);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-      this.testScroll();
-    });
+    // return this.chatService.getConvo(convoId).subscribe((messageData: any) => {
+    //   // this.specificMsgs.push({
+    //   //   userMessage: messageData.message,
+    //   //   senderId: messageData.sender,
+    //   // });
+
+    //   // console.log(this.specificMsgs);
+
+    //   this.testScroll();
+    // });
+  }
+
+  closeConvoPanel() {
+    this.convoArr = []
+    this.isConvoOpen = false
   }
 
   openSpecificMsg(num: number, data: any) {
@@ -103,28 +115,41 @@ export class MessagesComponent implements OnInit {
       this.specificMsg.userId = data.id;
       this.specificMsg.username = data.name;
     } else {
-      this.specificMsg.userId = data.user.id;
-      this.specificMsg.username = data.user.name;
-      this.specificMsg.roomId = data.messageRoom.id;
+      this.specificMsg.userId =
+        data.sender.id != this.currentUser.userId
+          ? data.sender.id
+          : data.receiver.id;
+      this.specificMsg.username =
+        data.sender.id != this.currentUser.userId
+          ? data.sender.name
+          : data.receiver.name;
+      this.specificMsg.convoId = data.id || null;
     }
 
-    this.openMsg = true;
+
 
     // load user messages
-    this.loadSpecificMessages();
+    this.loadSpecificMessages(data.id);
+    this.isConvoOpen = true;
     this.scrollToBottom();
   }
 
   sendMessage() {
-    if (this.userMessage) {
+    if (this.typedMessage) {
       this.chatService.sendMessage({
-        message: this.userMessage,
+        message: this.typedMessage,
         sender: this.currentUser.userId,
-        reciever: this.specificMsg.userId,
-        roomId: this.specificMsg.roomId,
+        receiver: this.specificMsg.userId,
+        convoId: this.specificMsg.convoId,
       });
 
-      this.userMessage = '';
+      this.convoArr.push({
+        text: this.typedMessage,
+      });
+
+      this.loadSpecificMessages(this.specificMsg.convoId);
+
+      this.typedMessage = '';
       this.testScroll();
     }
   }
