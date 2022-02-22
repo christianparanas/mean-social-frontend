@@ -60,8 +60,9 @@
 
           <div class="details">
             <div class="name">{{ chat.sender.id != currentUser.userId ? chat.sender.name : chat.receiver.name }}</div>
-            <div class="latestMsg">
+            <div class="latestMsg">{{ chat.sender.id == currentUser.userId ? "You" : chat.receiver.name }}:
               {{
+                
                 chat.messages[chat.messages.length - 1].text.length > 15
                   ? chat.messages[chat.messages.length - 1].text.substring(0, 15) + " ..."
                   : chat.messages[chat.messages.length - 1].text
