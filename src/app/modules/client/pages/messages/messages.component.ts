@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
+
 import { ChatService } from '../../shared/services/chat.service';
 import { ProfileService } from '../../shared/services/profile.service';
 import { FriendService } from '../../shared/services/friend.service';
@@ -16,7 +17,7 @@ export class MessagesComponent implements OnInit {
 
   typedMessage: any;
   friendsArr: any = [];
-  convoArr: any = []
+  convoArr: any = [];
   chatsArr: any = [];
 
   currentUser = {
@@ -24,7 +25,7 @@ export class MessagesComponent implements OnInit {
     username: '',
   };
 
-  specificMsg = {
+  convoData = {
     userId: null,
     username: null,
     convoId: null,
@@ -33,8 +34,6 @@ export class MessagesComponent implements OnInit {
   defaultImgLink = '../../../../../assets/images/chan.jpg';
 
   @ViewChild('btnScroll') scrollEl: any;
-
-
 
   constructor(
     private location: Location,
@@ -50,7 +49,6 @@ export class MessagesComponent implements OnInit {
     this.loadFriends();
     this.getUserPresence();
     this.loadUserMsgs();
-    this.loadChatFriends();
   }
 
   getCurrentUserData() {
@@ -80,12 +78,10 @@ export class MessagesComponent implements OnInit {
     );
   }
 
-  loadSpecificMessages(convoId: any) {
-
-    return this.chatService.getConvo(convoId).subscribe(
+  loadConvoMessages(convoId: any, hasConvo: boolean) {
+    return this.chatService.getConvo({ convoId, hasConvo }).subscribe(
       (response: any) => {
-        
-        this.convoArr = response.convo
+        this.convoArr = response.convo;
         console.log(this.convoArr);
       },
       (error) => {
@@ -94,42 +90,43 @@ export class MessagesComponent implements OnInit {
     );
 
     // return this.chatService.getConvo(convoId).subscribe((messageData: any) => {
-    //   // this.specificMsgs.push({
+    //   // this.convoDatas.push({
     //   //   userMessage: messageData.message,
     //   //   senderId: messageData.sender,
     //   // });
 
-    //   // console.log(this.specificMsgs);
+    //   // console.log(this.convoDatas);
 
     //   this.testScroll();
     // });
   }
 
   closeConvoPanel() {
-    this.convoArr = []
-    this.isConvoOpen = false
+    this.convoArr = [];
+    this.isConvoOpen = false;
   }
 
-  openSpecificMsg(num: number, data: any) {
+  openConvoPanel(num: number, data: any) {
     if (num == 1) {
-      this.specificMsg.userId = data.id;
-      this.specificMsg.username = data.name;
+      this.convoData.userId = data.id;
+      this.convoData.username = data.name;
+      this.loadConvoMessages(
+        { par1: data.id, par2: this.currentUser.userId },
+        false
+      );
     } else {
-      this.specificMsg.userId =
-        data.sender.id != this.currentUser.userId
-          ? data.sender.id
-          : data.receiver.id;
-      this.specificMsg.username =
-        data.sender.id != this.currentUser.userId
-          ? data.sender.name
-          : data.receiver.name;
-      this.specificMsg.convoId = data.id || null;
+      const userId = this.currentUser.userId;
+      const isOtherUser = data.sender.id != userId;
+
+      this.convoData.userId = isOtherUser ? data.sender.id : data.receiver.id;
+      this.convoData.username = isOtherUser
+        ? data.sender.name
+        : data.receiver.name;
+      this.convoData.convoId = data.id || null;
+      // load user messages
+      this.loadConvoMessages(data.id, true);
     }
 
-
-
-    // load user messages
-    this.loadSpecificMessages(data.id);
     this.isConvoOpen = true;
     this.scrollToBottom();
   }
@@ -139,15 +136,13 @@ export class MessagesComponent implements OnInit {
       this.chatService.sendMessage({
         message: this.typedMessage,
         sender: this.currentUser.userId,
-        receiver: this.specificMsg.userId,
-        convoId: this.specificMsg.convoId,
+        receiver: this.convoData.userId,
+        convoId: this.convoData.convoId,
       });
 
       this.convoArr.push({
         text: this.typedMessage,
       });
-
-      this.loadSpecificMessages(this.specificMsg.convoId);
 
       this.typedMessage = '';
       this.testScroll();
@@ -158,16 +153,9 @@ export class MessagesComponent implements OnInit {
     this.friendService.getUsers().subscribe(
       (response: any) => {
         this.friendsArr = response.users;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
 
-  loadChatFriends() {
-    this.friendService.getUserChats().subscribe(
-      (response: any) => {},
+        console.log(this.friendsArr);
+      },
       (error) => {
         console.log(error);
       }

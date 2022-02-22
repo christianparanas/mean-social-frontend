@@ -12,7 +12,7 @@
       <div
         class="friend_chathead__container"
         *ngFor="let friend of friendsArr"
-        (click)="openSpecificMsg(1, friend)"
+        (click)="openConvoPanel(1, friend)"
       >
         <img
           [src]="
@@ -29,7 +29,7 @@
 
     <div class="contentMsgs">
       <div class="noMsg" *ngIf="chatsArr && chatsArr.length == 0">
-        <img src="../../../assets/imgs/noMsgs.png" alt="" />
+        <img src="../../../../../assets/images/chan.jpg" alt="" />
         <p>No Messages</p>
       </div>
 
@@ -44,7 +44,7 @@
         <a
           class="msg"
           *ngFor="let chat of chatsArr"
-          (click)="openSpecificMsg(2, chat)"
+          (click)="openConvoPanel(2, chat)"
         >
           <img
             [src]="
@@ -77,7 +77,7 @@
   </div>
 
   <div *ngIf="!isConvoOpen" class="noSelectedMsg">
-    <img src="../../../assets/imgs/msgImg.png" alt="" />
+    <img src="../../../../../assets/images/chan.jpg" alt="" />
   </div>
 
   <div *ngIf="isConvoOpen" class="contentMsg">
@@ -93,7 +93,7 @@
           />
           <div class="online_indicator"></div>
           <div class="details">
-            <div class="name">{{ specificMsg.username }}</div>
+            <div class="name">{{ convoData.username }}</div>
             <div class="status">Active now</div>
           </div>
         </div>
