@@ -16,8 +16,12 @@ export class ChatService {
     this.socket.emit('sendMsg', userMessageData);
   }
 
-  getMessages(): Observable<string> {
+  getEmitMsg(): Observable<string> {
     return this.socket.fromEvent<string>('newMsg');
+  }
+
+  joinRoom(userMessageData: any) {
+    this.socket.emit('join', userMessageData);
   }
 
   getConvo(datas: any) {

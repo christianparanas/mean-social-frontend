@@ -108,9 +108,9 @@
         <div
           class="msg"
           *ngFor="let convo of convoArr"
-          [ngClass]="{ ownMessage: convo.sender.id == currentUser.userId }"
+          [ngClass]="{ ownMessage: (convo.sender.id || convo.sender) == currentUser.userId }"
         >
-          <img [src]="convo.userImage" alt="" />
+          <img [src]="defaultImgLink" alt="" />
           <p>{{ convo.text }}</p>
         </div>
         <div class="bottomscroll" #btnScroll></div>

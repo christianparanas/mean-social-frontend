@@ -17,15 +17,15 @@ export class MessagesComponent implements OnInit {
 
   typedMessage: any;
   friendsArr: any = [];
-  convoArr: any = [];
   chatsArr: any = [];
+  convoArr: any = []
 
   currentUser = {
     userId: null,
     username: '',
   };
 
-  convoData = {
+  convoData: any = {
     userId: null,
     username: null,
     convoId: null,
@@ -44,11 +44,14 @@ export class MessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.convoArr = []
+
     window.addEventListener('scroll', this.listenScrollEvent);
     this.getCurrentUserData();
     this.loadFriends();
     this.getUserPresence();
     this.loadUserMsgs();
+    this.getRealtimeMsg()
   }
 
   getCurrentUserData() {
@@ -82,31 +85,21 @@ export class MessagesComponent implements OnInit {
     return this.chatService.getConvo({ convoId, hasConvo }).subscribe(
       (response: any) => {
         this.convoArr = response.convo;
-        console.log(this.convoArr);
+        this.scrollToBottom();
       },
       (error) => {
         console.log(error);
       }
     );
-
-    // return this.chatService.getConvo(convoId).subscribe((messageData: any) => {
-    //   // this.convoDatas.push({
-    //   //   userMessage: messageData.message,
-    //   //   senderId: messageData.sender,
-    //   // });
-
-    //   // console.log(this.convoDatas);
-
-    //   this.testScroll();
-    // });
   }
 
   closeConvoPanel() {
-    this.convoArr = [];
+    this.convoData.messages = [];
     this.isConvoOpen = false;
   }
 
   openConvoPanel(num: number, data: any) {
+
     if (num == 1) {
       this.convoData.userId = data.id;
       this.convoData.username = data.name;
@@ -127,8 +120,39 @@ export class MessagesComponent implements OnInit {
       this.loadConvoMessages(data.id, true);
     }
 
-    this.isConvoOpen = true;
-    this.scrollToBottom();
+    this.isConvoOpen = true;  
+    this.joinRoom()
+  }
+
+  getRealtimeMsg() {
+    this.chatService.getEmitMsg().subscribe(
+      (response: any) => {
+        if(this.convoArr == undefined) {
+          this.convoArr = [{
+            text: response.message,
+            sender: response.sender
+          }]
+
+          this.scrollToBottom();
+          return
+        }
+
+        this.convoArr.push({
+          text: response.message,
+          sender: response.sender
+        })
+
+        this.scrollToBottom();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  joinRoom() {
+    this.chatService.joinRoom({
+      convoId: this.convoData.convoId,
+    });
+
   }
 
   sendMessage() {
@@ -140,10 +164,6 @@ export class MessagesComponent implements OnInit {
         convoId: this.convoData.convoId,
       });
 
-      this.convoArr.push({
-        text: this.typedMessage,
-      });
-
       this.typedMessage = '';
       this.testScroll();
     }
@@ -153,8 +173,6 @@ export class MessagesComponent implements OnInit {
     this.friendService.getUsers().subscribe(
       (response: any) => {
         this.friendsArr = response.users;
-
-        console.log(this.friendsArr);
       },
       (error) => {
         console.log(error);
