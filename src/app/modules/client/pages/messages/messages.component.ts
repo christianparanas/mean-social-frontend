@@ -15,6 +15,8 @@ import * as moment from 'moment';
 export class MessagesComponent implements OnInit {
   onScroll: boolean = false;
   isConvoOpen: boolean = false;
+  isNoConvo: boolean = false;
+  isNoConvoMsgs: boolean = false;
 
   typedMessage: any;
   friendsArr: any = [];
@@ -56,7 +58,7 @@ export class MessagesComponent implements OnInit {
   }
 
   convertPostData(date: any): any {
-    return moment(date).format('LT');  
+    return moment(date).format('LT');
   }
 
   getCurrentUserData() {
@@ -79,7 +81,12 @@ export class MessagesComponent implements OnInit {
     this.chatService.getUserMsgs().subscribe(
       (response: any) => {
         this.chatsArr = response.messages;
-        console.log(this.chatsArr)
+
+        if (this.chatsArr.length == 0) {
+          this.isNoConvo = true;
+        } else {
+          this.isNoConvo = false;
+        }
       },
       (error) => {
         console.log(error);
@@ -91,6 +98,9 @@ export class MessagesComponent implements OnInit {
     return this.chatService.getConvo({ convoId, hasConvo }).subscribe(
       (response: any) => {
         this.convoArr = response.convo;
+        this.isNoConvoMsgs = response.convo == undefined ? true : false;
+
+        this.isConvoOpen = true;
         this.scrollToBottom();
       },
       (error) => {
@@ -101,7 +111,7 @@ export class MessagesComponent implements OnInit {
 
   closeConvoPanel() {
     this.loadUserMsgs();
-    this.convoData.messages = [];
+    this.convoArr = [];
     this.isConvoOpen = false;
   }
 
@@ -122,11 +132,11 @@ export class MessagesComponent implements OnInit {
         ? data.sender.name
         : data.receiver.name;
       this.convoData.convoId = data.id || null;
+
       // load user messages
       this.loadConvoMessages(data.id, true);
     }
 
-    this.isConvoOpen = true;
     this.joinRoom();
   }
 
@@ -140,6 +150,8 @@ export class MessagesComponent implements OnInit {
               sender: response.sender,
             },
           ];
+
+          this.isNoConvoMsgs = this.convoArr == undefined ? true : false;
 
           this.scrollToBottom();
           return;

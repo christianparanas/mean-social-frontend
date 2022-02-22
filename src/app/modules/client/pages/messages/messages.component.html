@@ -28,11 +28,11 @@
     </div>
 
     <div class="contentMsgs">
-      <div class="noMsg" *ngIf="chatsArr && chatsArr.length == 0">
+      <div class="noMsg" *ngIf="isNoConvo">
         <p>No Messages</p>
       </div>
 
-      <div class="searchMsg">
+      <div class="searchMsg" *ngIf="chatsArr.length != 0">
         <div class="wrapper">
           <i class="fal fa-search"></i>
           <input type="text" placeholder="Search" />
@@ -110,6 +110,9 @@
         >
           <img [src]="defaultImgLink" alt="" />
           <p>{{ convo.text }}</p>
+        </div>
+        <div *ngIf="isNoConvoMsgs" class="noMsgInfo">
+          Say Hi!
         </div>
         <div class="bottomscroll" #btnScroll></div>
       </div>

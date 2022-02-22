@@ -46,6 +46,7 @@
       overflow-x: scroll;
       display: flex;
       padding: 70px 0 10px 20px;
+      height: 130px;
 
       .friend_chathead__container {
         display: grid;
@@ -53,6 +54,7 @@
         margin-right: 15px;
         text-align: center;
         position: relative;
+        height: 50px;
 
         img {
           width: 50px;
@@ -81,6 +83,12 @@
     .contentMsgs {
       z-index: 9;
       width: 100%;
+
+      .noMsg {
+        margin-top: 100px;
+        display: grid;
+        place-items: center;
+      }
 
       .searchMsg {
         .wrapper {
