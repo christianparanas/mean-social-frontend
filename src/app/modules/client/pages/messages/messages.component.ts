@@ -5,6 +5,7 @@ import { ChatService } from '../../shared/services/chat.service';
 import { ProfileService } from '../../shared/services/profile.service';
 import { FriendService } from '../../shared/services/friend.service';
 import { EventsService } from '../../shared/services/events.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-messages',
@@ -18,7 +19,7 @@ export class MessagesComponent implements OnInit {
   typedMessage: any;
   friendsArr: any = [];
   chatsArr: any = [];
-  convoArr: any = []
+  convoArr: any = [];
 
   currentUser = {
     userId: null,
@@ -44,14 +45,18 @@ export class MessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.convoArr = []
+    this.convoArr = [];
 
     window.addEventListener('scroll', this.listenScrollEvent);
     this.getCurrentUserData();
     this.loadFriends();
     this.getUserPresence();
     this.loadUserMsgs();
-    this.getRealtimeMsg()
+    this.getRealtimeMsg();
+  }
+
+  convertPostData(date: any): any {
+    return moment(date).format('LT');  
   }
 
   getCurrentUserData() {
@@ -74,6 +79,7 @@ export class MessagesComponent implements OnInit {
     this.chatService.getUserMsgs().subscribe(
       (response: any) => {
         this.chatsArr = response.messages;
+        console.log(this.chatsArr)
       },
       (error) => {
         console.log(error);
@@ -94,12 +100,12 @@ export class MessagesComponent implements OnInit {
   }
 
   closeConvoPanel() {
+    this.loadUserMsgs();
     this.convoData.messages = [];
     this.isConvoOpen = false;
   }
 
   openConvoPanel(num: number, data: any) {
-
     if (num == 1) {
       this.convoData.userId = data.id;
       this.convoData.username = data.name;
@@ -120,27 +126,29 @@ export class MessagesComponent implements OnInit {
       this.loadConvoMessages(data.id, true);
     }
 
-    this.isConvoOpen = true;  
-    this.joinRoom()
+    this.isConvoOpen = true;
+    this.joinRoom();
   }
 
   getRealtimeMsg() {
     this.chatService.getEmitMsg().subscribe(
       (response: any) => {
-        if(this.convoArr == undefined) {
-          this.convoArr = [{
-            text: response.message,
-            sender: response.sender
-          }]
+        if (this.convoArr == undefined) {
+          this.convoArr = [
+            {
+              text: response.message,
+              sender: response.sender,
+            },
+          ];
 
           this.scrollToBottom();
-          return
+          return;
         }
 
         this.convoArr.push({
           text: response.message,
-          sender: response.sender
-        })
+          sender: response.sender,
+        });
 
         this.scrollToBottom();
       },
@@ -152,7 +160,6 @@ export class MessagesComponent implements OnInit {
     this.chatService.joinRoom({
       convoId: this.convoData.convoId,
     });
-
   }
 
   sendMessage() {

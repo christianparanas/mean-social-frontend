@@ -29,7 +29,6 @@
 
     <div class="contentMsgs">
       <div class="noMsg" *ngIf="chatsArr && chatsArr.length == 0">
-        <img src="../../../../../assets/images/chan.jpg" alt="" />
         <p>No Messages</p>
       </div>
 
@@ -62,15 +61,14 @@
           <div class="details">
             <div class="name">{{ chat.sender.id != currentUser.userId ? chat.sender.name : chat.receiver.name }}</div>
             <div class="latestMsg">
-              hello
-              <!-- {{
-                msg.latestMsg.length > 15
-                  ? msg.latestMsg.substring(0, 15) + " ..."
-                  : msg.latestMsg
-              }} -->
+              {{
+                chat.messages[chat.messages.length - 1].text.length > 15
+                  ? chat.messages[chat.messages.length - 1].text.substring(0, 15) + " ..."
+                  : chat.messages[chat.messages.length - 1].text
+              }}
             </div>
           </div>
-          <div class="date">1am</div>
+          <div class="date">{{ convertPostData(chat.messages[chat.messages.length - 1].updatedAt) }}</div>
         </a>
       </div>
     </div>
