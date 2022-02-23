@@ -55,6 +55,7 @@ export class MessagesComponent implements OnInit {
     this.getUserPresence();
     this.loadUserMsgs();
     this.getRealtimeMsg();
+    this.getNewMsgNotif();
   }
 
   convertPostData(date: any): any {
@@ -76,6 +77,8 @@ export class MessagesComponent implements OnInit {
       this.loadFriends();
     });
   }
+
+
 
   loadUserMsgs() {
     this.chatService.getUserMsgs().subscribe(
@@ -152,7 +155,6 @@ export class MessagesComponent implements OnInit {
           ];
 
           this.isNoConvoMsgs = this.convoArr == undefined ? true : false;
-
           this.scrollToBottom();
           return;
         }
@@ -174,6 +176,18 @@ export class MessagesComponent implements OnInit {
     });
   }
 
+  newMsgNotification(receiverId: any) {
+    this.eventsService.sendNewMessageNotification(receiverId);
+  }
+
+  getNewMsgNotif() {
+    this.eventsService.getNewMsgNotif().subscribe((res) => {
+      console.log("new")
+
+      this.loadUserMsgs()
+    });
+  }
+
   sendMessage() {
     if (this.typedMessage) {
       this.chatService.sendMessage({
@@ -181,11 +195,15 @@ export class MessagesComponent implements OnInit {
         sender: this.currentUser.userId,
         receiver: this.convoData.userId,
         convoId: this.convoData.convoId,
-      });
+      })
+
+      this.newMsgNotification(this.convoData.userId);
 
       this.typedMessage = '';
       this.testScroll();
     }
+
+    
   }
 
   loadFriends() {

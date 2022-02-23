@@ -7,7 +7,7 @@
       color: var(--primaryColor);
       box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
       padding: 15px 20px 15px 10px;
-      background-color: var(--secondaryBgColor);
+      background-color: var(--background);
       align-items: center;
 
       .gobackBtn {
@@ -16,7 +16,7 @@
 
       input {
         padding: 10px 15px;
-        background-color: var(--primaryBgColor);
+        background-color: var(--secondaryBg);
         outline: 0;
         border: 0;
         color: var(--primaryColor);
@@ -41,7 +41,7 @@
           display: grid;
           grid-template-columns: 30px 1fr;
           gap: 5px;
-          color: var(--primaryColor);
+          color: var(--secondaryFg);
           font-size: 14px;
 
           i {

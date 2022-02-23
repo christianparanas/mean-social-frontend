@@ -8,7 +8,7 @@
     position: relative;
   
     .p-dialog-header, .p-dialog-content {
-      background-color: var(--primaryBgColor);
+      background-color: var(--background);
       color: var(--primaryColor);
     }
   
@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px;
-      border-bottom: 1px solid var(--pageBgColor);
+      border-bottom: 3px solid var(--secondaryBg);
   
       .p-dialog-header-icons {
         display: none;
@@ -67,7 +67,7 @@
               border-radius: 3px;
               font-size: 10px;
               cursor: pointer;
-              border: 1px solid var(--secondaryColor);
+              border: 2px solid var(--secondaryBg);
 
               p {
                 margin: 0 5px;
@@ -79,7 +79,7 @@
         .content {
 
           textarea {
-            background-color: var(--primaryBgColor);
+            background-color: var(--background);
             border: 0;
             color: var(--primaryColor);
             outline: 0;

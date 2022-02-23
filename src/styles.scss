@@ -6,15 +6,26 @@
 @import "../node_modules/primeflex/primeflex.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Fredoka One", sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .dark-mode {
+  --background: #091a28;
+  --foreground: white;
+  --secondaryFg: #afadad;
+  --secondaryBg: #1f2937;
+  --shadow: 0 0px 0px 0 RGB(43 80 237 / 20%);
+  --borderColor: #1f2937;
+  --currentRouteColor: #6b21A8;
+
+
   --pageBgColor: #242829;
 
   --primaryBgColor: #2d3436;
@@ -22,11 +33,19 @@
 
   --primaryColor: #fff;
   --secondaryColor: #e3e3e3;
-  --borderColor: #2d3436;
 
 }
 
 .light-mode {
+  --background: #fafafa;
+  --foreground: #365771;
+  --secondaryFg: #365771a6;
+  --secondaryBg: #fff;
+  --shadow: 0 4px 4px 0 RGB(43 80 237 / 20%);
+  --borderColor: #fafafa;
+  --currentRouteColor: #6b21A8;
+
+
   --pageBgColor: #fff;
 
   --primaryBgColor: #fff;
@@ -34,10 +53,9 @@
 
   --primaryColor: #2d3436;
   --secondaryColor: #9a9a9b;
-  --borderColor: #e3e3e3;
 }
 
 body {
-  background-color: var(--pageBgColor);
+  background-color: var(--background);
   color: var(--color);
 }

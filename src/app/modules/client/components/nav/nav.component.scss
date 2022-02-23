@@ -6,7 +6,7 @@
       z-index: 100;
       position: fixed;
       width: 100%;
-      background-color: var(--primaryBgColor);
+      background-color: var(--background);
       color: var(--primaryColor);
 
       .top__container {
@@ -21,10 +21,10 @@
           grid-template-columns: 1fr 1fr;
 
           i {
-            font-size: 20px;
+            font-size: 15px;
             padding: 8px;
             cursor: pointer;
-            background-color: var(--secondaryBgColor);
+            background-color: var(--secondaryBg);
             border-radius: 50%;
           }
         }
@@ -39,23 +39,20 @@
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          border-bottom: 1px solid var(--borderColor);
+          border-bottom: 2px solid var(--borderColor);
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
 
           i {
             padding: 12px;
             font-size: 20px;
-          }
-
-          &:hover {
-            background-color: var(--secondaryBgColor);
+            font-weight: 400;
           }
         }
 
         .currentRoute {
-          color: var(--primary-color);
-          border-bottom: 1px solid var(--primary-color);
+          color: var(--currentRouteColor);
+          border-bottom: 2px solid var(--currentRouteColor);
         }
       }
     }
@@ -64,11 +61,11 @@
       z-index: 101;
       width: 330px;
       color: var(--primaryColor);
-      background-color: var(--primaryBgColor);
+      background-color: var(--background);
       padding: 0;
 
       .p-sidebar-header {
-        box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+        border-bottom: 3px solid var(--secondaryBg);
         padding: 10px;
       }
 
@@ -83,7 +80,7 @@
           grid-gap: 10px;
           padding: 10px;
           cursor: pointer;
-          box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+          border-bottom: 3px solid var(--secondaryBg);
 
           img {
             width: 40px;
@@ -96,6 +93,7 @@
             p {
               font-size: 12px;
               margin-top: 5px;
+              color: var(--secondaryFg);
             }
           }
         }
@@ -111,16 +109,16 @@
             .shortcuts_content__container {
               display: grid;
               grid-template-columns: 1fr 1fr;
-              gap: 5px;
+              gap: 7px;
 
               .shortcut__container {
-                background-color: var(--secondaryBgColor);
-                border-radius: 8px;
+                background-color: var(--secondaryBg);
+                border-radius: 5px;
                 padding: 15px;
                 cursor: pointer;
-                box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
                 border: 2px solid var(--borderColor);
                 height: fit-content;
+                font-size: 12px;
               }
             }
           }
@@ -138,34 +136,37 @@
 
 
                 .p-accordion-header-link {
-                  background-color: var(--secondaryBgColor);
+                  background-color: var(--secondaryBg);
                   color: var(--primaryColor);
-                  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
                   border: 0;
                   border-radius: 8px;
-                  border: 2px solid var(--borderColor);
+                  border: 2px solid var(--secondaryBg);
+                  font-size: 12px;
+                  margin-bottom: 5px;
+                  padding: 15px; 
 
                   .pi {
                     position: absolute;
                     right: 0;
+                    font-size: 10px;
                   }
                 }
               }
 
               .p-accordion-content {
-                background-color: var(--secondaryBgColor);
+                background-color: var(--secondaryBg);
                 color: var(--primaryColor);
                 border: 0;
                 border-radius: 8px;
                 padding: 5px;
                 border: 2px solid var(--borderColor);
+                font-size: 12px;
 
                 .darkMode__container {
                   display: flex;
                   justify-content: space-between;
                   align-items: center;
-                  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
-                  background-color: var(--primaryBgColor);
+                  background-color: var(--background);
                   border-radius: 8px;
                   padding: 10px 20px;
                   border: 2px solid var(--borderColor);
@@ -175,12 +176,17 @@
 
             .logoutBtn {
               padding: 16px 20px;
-              background-color: var(--secondaryBgColor);
+              background-color: var(--secondaryBg);
               color: var(--primaryColor);
-              box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
               border-radius: 8px;
+              font-size: 12px;
               cursor: pointer;
               border: 2px solid var(--borderColor);
+              transition: all .3s ease;
+
+              &:hover {
+                background: #dc3545;
+              }
             }
           }
         }

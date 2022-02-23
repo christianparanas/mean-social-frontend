@@ -25,9 +25,11 @@
           }
 
           input {
-            background-color: var(--primaryBgColor);
+            background-color: var(--secondaryBg);
             border-color: var(--borderColor);
             color: var(--primaryColor);
+            border: 3px solid var(--borderColor);
+            box-shadow: var(--shadow);
           }
 
           ::placeholder {
@@ -42,9 +44,11 @@
             }
 
             input {
-              background-color: var(--primaryBgColor);
-              border-color: var(--borderColor);
-              color: var(--primaryColor);
+              background-color: var(--secondaryBg);
+            border-color: var(--borderColor);
+            color: var(--primaryColor);
+            border: 3px solid var(--borderColor);
+            box-shadow: var(--shadow);
               font-size: 14px;
               border-radius: 8px;
               padding: 12px 15px;

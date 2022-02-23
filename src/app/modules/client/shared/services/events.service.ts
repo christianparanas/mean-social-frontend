@@ -14,6 +14,14 @@ export class EventsService {
 
   constructor(private socket: Socket, private http: HttpClient) { }
 
+  sendNewMessageNotification(data: any) {
+    this.socket.emit('messageNotification', data)
+  }
+
+  getNewMsgNotif(): Observable<string> {
+    return this.socket.fromEvent<string>('msgNotif');
+  }
+
   sendNewPostIndicator() {
     this.socket.emit('newPost');
   }

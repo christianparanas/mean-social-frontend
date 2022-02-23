@@ -30,9 +30,6 @@ export class ChatService {
       hasConvo: datas.hasConvo
     }
 
-    console.log(data);
-    
-
     return this.http.post(`${baseURL}/api/chats/convo`, data)
   }
 

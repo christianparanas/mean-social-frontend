@@ -8,7 +8,7 @@
 
     .p-dialog-header,
     .p-dialog-content {
-      background-color: var(--primaryBgColor);
+      background-color: var(--background);
       color: var(--primaryColor);
     }
 
@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px;
-      border-bottom: 1px solid var(--pageBgColor);
+      border-bottom: 3px solid var(--secondaryBg);
       height: 60px;
 
       .p-dialog-header-icons {
@@ -45,6 +45,7 @@
           p {
             font-size: 11px;
             margin: 15px 0;
+            color: var(--secondaryFg);
           }
 
           .chooseAudience {
@@ -58,7 +59,7 @@
               grid-template-columns: 35px 30px 1fr;
               padding: 15px 5px;
               align-items: center;
-              border-bottom: 1px solid var(--borderColor);
+              border-bottom: 3px solid var(--borderColor);
               cursor: pointer;
 
               .box {

@@ -20,9 +20,11 @@
           grid-gap: 5px;
 
           input {
-            background-color: var(--primaryBgColor);
+            background-color: var(--secondaryBg);
             border-color: var(--borderColor);
             color: var(--primaryColor);
+            border: 3px solid var(--borderColor);
+            box-shadow: var(--shadow);
           }
 
           ::placeholder {

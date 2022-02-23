@@ -29,8 +29,6 @@ export class ProfileComponent implements OnInit {
         this.profileData = (({ posts, ...o }) => o)(response);
         this.postsArr = response.posts;
 
-        this.eventsService.sendUserOnlineIndicator(this.profileData.id);
-
         console.log(this.profileData);
         console.log(this.postsArr);
       },

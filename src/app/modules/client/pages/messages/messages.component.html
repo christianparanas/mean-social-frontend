@@ -60,7 +60,7 @@
 
           <div class="details">
             <div class="name">{{ chat.sender.id != currentUser.userId ? chat.sender.name : chat.receiver.name }}</div>
-            <div class="latestMsg">{{ chat.sender.id == currentUser.userId ? "You" : chat.receiver.name }}:
+            <div class="latestMsg">{{ chat.messages[chat.messages.length - 1].sender.id == currentUser.userId ? "You" : chat.messages[chat.messages.length - 1].sender.name }}:
               {{
                 
                 chat.messages[chat.messages.length - 1].text.length > 15
@@ -124,7 +124,8 @@
         <div class="openMoreActions_btn">
           <i class="fal fa-plus-circle"></i>
         </div>
-        <input
+        <textarea
+          class="textarea"
           type="text"
           placeholder="Send message"
           [(ngModel)]="typedMessage"
@@ -133,7 +134,7 @@
           (focus)="testScroll()"
           required
           [ngModelOptions]="{ standalone: true }"
-        />
+        ></textarea>
         <div class="sendMsg_btn">
           <i
             (click)="sendMessage(); msgInput.focus()"

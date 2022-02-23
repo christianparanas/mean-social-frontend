@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 
@@ -12,7 +13,7 @@ const baseURL = environment.baseURL;
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public router: Router) {}
 
   register(data: any) {
     return this.http.post(`${baseURL}/api/users/register`, data);
@@ -41,7 +42,7 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     if (moment().isBefore(this.getExpiration()) == false) this.logout();
-    return moment().isBefore(this.getExpiration());
+    return moment().isBefore(this.getExpiration())
   }
 
   isLoggedOut(): boolean {

@@ -1,5 +1,5 @@
 .customer_msgs__main_container {
-  background-color: var(--secondaryBgColor);
+  background-color: var(--background);
   height: 100vh;
   min-height: fit-content;
   display: grid;
@@ -15,8 +15,8 @@
 
     .header {
       display: flex;
-      border-bottom: 2px solid var(--borderColor);
-      background-color: var(--primaryBgColor);
+      border-bottom: 2px solid var(--secondaryBg);
+      background-color: var(--background);
       color: var(--primaryColor);
       padding: 10px 20px 10px 15px;
       align-items: center;
@@ -98,10 +98,10 @@
 
           input {
             width: 100%;
-            background-color: var(--primaryBgColor);
+            background-color: var(--secondaryBg);
             font-size: 16px;
             padding: 12px 12px 12px 42px;
-            border-radius: 15px;
+            border-radius: 10px;
             outline: 0;
             border: 0;
             color: var(--primaryColor);
@@ -124,13 +124,15 @@
         display: grid;
         gap: 5px;
         margin-top: 20px;
+        padding: 0 15px;
 
         .msg {
-          padding: 10px 20px;
+          padding: 10px 10px 10px 10px;
           display: grid;
           grid-template-columns: 50px 1fr 60px;
           align-items: center;
-          background-color: var(--primaryBgColor);
+          background-color: var(--secondaryBg);
+          border-radius: 5px;
 
           img {
             width: 50px;
@@ -260,13 +262,15 @@
           font-size: 20px;
         }
 
-        input {
+        textarea {
           background-color: var(--primaryBgColor);
           color: var(--primaryColor);
           padding: 14px 15px;
           border-radius: 15px;
           outline: 0;
           border: 0;
+          resize: vertical; 
+          min-height: 45px;       
         }
       }
     }
@@ -306,6 +310,7 @@
             color: var(--primaryColor);
             padding: 10px;
             border-radius: 15px;
+            white-space: pre-wrap;
           }
         }
 
@@ -557,7 +562,7 @@
             cursor: pointer;
           }
 
-          input {
+          .textarea {
             background: #f3f3f5;
             padding: 14px 15px;
             border-radius: 15px;

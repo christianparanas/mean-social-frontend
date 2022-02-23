@@ -1,9 +1,8 @@
 .postcontainer__main_container {
-  background: var(--primaryBgColor);
+  background-color: var(--secondaryBg);
   color: var(--primaryColor);
-
-  border-bottom: 1px solid var(--borderColor);
-  border-top: 1px solid var(--borderColor);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
 
   .post_header__container {
     width: 100%;
@@ -29,26 +28,28 @@
       .post_details__wrapper {
         .post_dateposted_privacy__container {
           display: flex;
-          font-size: 12px;
+          font-size: 10px;
           color: var(--postContainerSecondaryColor);
 
           .dateposted__wrapper {
             margin-right: 5px;
+            color: var(--secondaryFg);
           }
         }
       }
 
       ::ng-deep .p-tieredmenu {
-        background-color: var(--primaryBgColor);
+        background-color: var(--background);
 
         .p-menuitem-link {
           .p-menuitem-icon,
           .p-menuitem-text {
             color: var(--primaryColor);
+            font-size: 10px;
           }
 
           &:hover {
-            background-color: var(--secondaryBgColor);
+            background-color: var(--secondaryBg);
           }
         }
       }
@@ -59,8 +60,9 @@
     margin: 10px 0;
 
     .post_text_content__container {
-      font-size: 14px;
+      font-size: 12px;
       padding: 0 15px 10px;
+      white-space: pre-wrap;
     }
 
     .post_image_content__container {
@@ -83,9 +85,12 @@
 
       .post_likes_count__container {
         display: flex;
+        align-items: center;
 
         .icons {
           margin-right: 3px;
+          display: flex;
+          align-items: center;
 
           img {
             width: 15px;
@@ -94,7 +99,12 @@
         }
 
         .count {
-          font-size: 12px;
+          font-size: 10px;
+          transition: all .3s ease;
+
+          &:hover {
+            color: var(--secondaryFg);
+          }
         }
       }
 
@@ -105,7 +115,12 @@
 
         .container {
           display: flex;
-          font-size: 12px;
+          font-size: 10px;
+          transition: all .3s ease;
+
+          &:hover {
+            color: var(--secondaryFg);
+          }
 
           p {
             margin-right: 3px;
@@ -119,9 +134,10 @@
     }
 
     .bottom__container {
-      padding-top: 10px;
+      margin-top: 5px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      border-top: 2px solid var(--background);
 
       .container {
         display: flex;
@@ -129,13 +145,19 @@
         align-items: center;
         padding: 10px 5px;
         cursor: pointer;
+        transition: all .3s ease;
+
+        &:hover {
+          color: var(--secondaryFg);
+        }
 
         i {
           margin-right: 5px;
+          font-size: 12px;
         }
 
         p {
-          font-size: 14px;
+          font-size: 12px;
         }
       }
     }
@@ -144,7 +166,7 @@
 
 .post_skeleton__container {
   padding: 10px;
-  background-color: var(--primaryBgColor);
+  background-color: var(--secondaryBg);
   display: grid;
   grid-template-columns: 50px 1fr;
   gap: 10px;
@@ -160,7 +182,7 @@
   }
 
   ::ng-deep .skel.p-skeleton {
-    background-color: var(--secondaryBgColor);
+    background-color: var(--secondaryBg);
     border: 2px solid var(--borderColor);
   }
 }
