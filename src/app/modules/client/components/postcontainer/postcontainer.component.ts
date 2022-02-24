@@ -3,6 +3,8 @@ import * as moment from 'moment';
 
 import { MenuItem } from 'primeng/api';
 
+import { ProfileService } from '../../shared/services/profile.service'
+
 @Component({
   selector: 'app-postcontainer',
   templateUrl: './postcontainer.component.html',
@@ -11,10 +13,12 @@ import { MenuItem } from 'primeng/api';
 export class PostcontainerComponent implements OnInit {
   @Input() postArray: any;
   items: MenuItem[];
+  currentUserId: any = null
 
-  constructor() {}
+  constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
+    this.getCurrentUserId()
     this.items = [
       {
         label: 'Edit Post',
@@ -29,6 +33,15 @@ export class PostcontainerComponent implements OnInit {
         icon: 'pi pi-fw pi-times-circle',
       },
     ];
+  }
+
+  getCurrentUserId() {
+    this.profileService.getCurrentUserId().subscribe((response: any) => { 
+      this.currentUserId = response.userId
+    }, 
+    (err) => { 
+      console.log(err) 
+    })
   }
 
   convertPostData(date: any): any {

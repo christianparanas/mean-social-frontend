@@ -32,6 +32,7 @@ export class MessagesComponent implements OnInit {
     userId: null,
     username: null,
     convoId: null,
+    isOnline: null
   };
 
   defaultImgLink = '../../../../../assets/images/chan.jpg';
@@ -85,6 +86,8 @@ export class MessagesComponent implements OnInit {
       (response: any) => {
         this.chatsArr = response.messages;
 
+        console.log(this.chatsArr)
+
         if (this.chatsArr.length == 0) {
           this.isNoConvo = true;
         } else {
@@ -122,6 +125,7 @@ export class MessagesComponent implements OnInit {
     if (num == 1) {
       this.convoData.userId = data.id;
       this.convoData.username = data.name;
+      this.convoData.isOnline = data.isOnline;
       this.loadConvoMessages(
         { par1: data.id, par2: this.currentUser.userId },
         false
@@ -131,10 +135,9 @@ export class MessagesComponent implements OnInit {
       const isOtherUser = data.sender.id != userId;
 
       this.convoData.userId = isOtherUser ? data.sender.id : data.receiver.id;
-      this.convoData.username = isOtherUser
-        ? data.sender.name
-        : data.receiver.name;
+      this.convoData.username = isOtherUser ? data.sender.name: data.receiver.name;
       this.convoData.convoId = data.id || null;
+      this.convoData.isOnline = isOtherUser ? data.sender.isOnline : data.receiver.isOnline;
 
       // load user messages
       this.loadConvoMessages(data.id, true);

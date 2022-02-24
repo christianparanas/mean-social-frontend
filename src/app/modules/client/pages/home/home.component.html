@@ -5,7 +5,7 @@
 
   <div class="home__container">
     <div class="newPostIndicator__container" *ngIf="showNewPostIndicator"> 
-      <div class="btn">Load new post(s) - <span (click)="loadPosts()">click here</span></div>
+      <div class="btn" (click)="loadPosts()">Load new post(s)</div>
     </div>
 
     <div class="createpost__container">
@@ -44,7 +44,7 @@
 
     <div class="posts__container">
 
-      <app-postcontainer
+      <app-postcontainer 
         *ngFor="let post of postsArray"
         [postArray]="post"
       ></app-postcontainer>

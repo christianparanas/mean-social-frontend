@@ -4,6 +4,7 @@ import { EventsService } from '../../shared/services/events.service';
 
 import { PostService } from '../../shared/services/post.service';
 import { SupabaseService } from '../../shared/services/supabase.service';
+import { ProfileService } from '../../shared/services/profile.service'
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,15 @@ import { SupabaseService } from '../../shared/services/supabase.service';
 })
 export class HomeComponent implements OnInit {
   postsArray: any = new Array(3);
-  showNewPostIndicator: boolean = false
+  showNewPostIndicator: boolean = false;
+  currentUserId: any = null
 
   constructor(
     private postService: PostService,
     private supabaseService: SupabaseService,
     private eventsService: EventsService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +29,16 @@ export class HomeComponent implements OnInit {
     this.loadUser();
 
     this.getNewPostIndicator();
-    
+        this.getCurrentUserId()
+  }
+
+  getCurrentUserId() {
+    this.profileService.getCurrentUserId().subscribe((response: any) => { 
+      this.currentUserId = response.userId
+    }, 
+    (err) => { 
+      console.log(err) 
+    })
   }
 
   getNewPostIndicator() {

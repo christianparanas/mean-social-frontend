@@ -32,7 +32,7 @@
         <p>No Messages</p>
       </div>
 
-      <div class="searchMsg" *ngIf="chatsArr.length != 0">
+      <div class="searchMsg">
         <div class="wrapper">
           <i class="fal fa-search"></i>
           <input type="text" placeholder="Search" />
@@ -87,13 +87,13 @@
         </div>
         <div class="chatUser">
           <img
-            src="https://avatars.githubusercontent.com/u/59472122?v=4"
+            [src]="defaultImgLink"
             alt=""
           />
-          <div class="online_indicator"></div>
+          <div *ngIf="convoData.isOnline == 'true'" class="online_indicator"></div>
           <div class="details">
             <div class="name">{{ convoData.username }}</div>
-            <div class="status">Active now</div>
+            <div class="status">{{ convoData.isOnline == 'true' ? "Active now" : "Offline" }}</div>
           </div>
         </div>
       </div>

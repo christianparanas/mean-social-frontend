@@ -44,7 +44,6 @@ export class CreatepostComponent implements OnInit {
       return;
     }
 
-    console.log(this.postContent.textContent);
     this.disablePostBtn = false;
   }
 
