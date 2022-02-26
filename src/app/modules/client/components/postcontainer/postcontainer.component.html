@@ -60,9 +60,9 @@
       </div>
     </div>
     <div class="bottom__container">
-      <div class="container">
+      <div class="container" (click)="reactPost([postArray.id, currentUserId])" [ngClass]="{ isActive: isAlreadyReacted(postArray.likers)}" >
         <i class="fal fa-thumbs-up"></i>
-        <p>Like</p>
+        <p>{{ isAlreadyReacted(postArray.likers) ? "Liked" : "Like" }}</p>
       </div>
       <div class="container">
         <i class="fal fa-comment-alt"></i>

@@ -45,7 +45,8 @@
     <div class="posts__container">
 
       <app-postcontainer 
-        *ngFor="let post of postsArray"
+        (callParentMeth)="loadPosts()"
+        *ngFor="let post of postsArray; trackBy: trackPost"
         [postArray]="post"
       ></app-postcontainer>
     </div>

@@ -32,6 +32,11 @@ export class HomeComponent implements OnInit {
         this.getCurrentUserId()
   }
 
+
+  trackPost(index: number, post: any) {
+    return post.id;
+  }
+
   getCurrentUserId() {
     this.profileService.getCurrentUserId().subscribe((response: any) => { 
       this.currentUserId = response.userId

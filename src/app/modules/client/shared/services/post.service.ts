@@ -18,4 +18,8 @@ export class PostService {
   getPosts() {
     return this.http.get(`${baseURL}/api/posts/`);
   }
+
+  reactPost(data: any) {
+    return this.http.post(`${baseURL}/api/posts/react`, data)
+  }
 }
