@@ -41,12 +41,13 @@
 
   <div class="post_interactions__container">
     <div class="top__container">
-      <div class="post_likes_count__container">
+      <div class="post_likes_count__container" *ngIf="postArray.likers.length != 0">
         <div class="icons">
           <img src="../../../../../assets/svgs/facebook-like.svg" alt="" />
         </div>
-        <div class="count">1</div>
+        <div class="count">{{ postArray.likers.length }}</div>
       </div>
+      <div class="" *ngIf="postArray.likers.length == 0"></div>
       <div class="post_commentShare_count__container">
         <div class="container">
           <p>2</p>
