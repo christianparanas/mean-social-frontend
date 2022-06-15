@@ -4,7 +4,7 @@
   <app-createpost (postedEvent)="loadPosts()" #createPost></app-createpost>
 
   <div class="home__container">
-    <div class="newPostIndicator__container" *ngIf="showNewPostIndicator"> 
+    <div class="newPostIndicator__container" *ngIf="showNewPostIndicator">
       <div class="btn" (click)="loadPosts()">Load new post(s)</div>
     </div>
 
@@ -38,15 +38,18 @@
       </div>
     </div>
 
-    <div class="noPost" *ngIf="postsArray && postsArray.length == 0"><h3>No Post(s)</h3></div>
+    <div class="noPost" *ngIf="postsArray && postsArray.length == 0">
+      <h3>No Post(s)</h3>
+    </div>
 
-    <div class="noPost" *ngIf="postsArray == null"><h3>Something went wrong.</h3></div>
+    <div class="noPost" *ngIf="postsArray == null">
+      <h3>Something went wrong.</h3>
+    </div>
 
     <div class="posts__container">
-
-      <app-postcontainer 
+      <app-postcontainer
         (callParentMeth)="loadPosts()"
-        *ngFor="let post of postsArray; trackBy: trackPost"
+        *ngFor="let post of postsArray"
         [postArray]="post"
       ></app-postcontainer>
     </div>

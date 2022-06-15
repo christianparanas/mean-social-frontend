@@ -4,7 +4,7 @@ import { EventsService } from '../../shared/services/events.service';
 
 import { PostService } from '../../shared/services/post.service';
 import { SupabaseService } from '../../shared/services/supabase.service';
-import { ProfileService } from '../../shared/services/profile.service'
+import { ProfileService } from '../../shared/services/profile.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ import { ProfileService } from '../../shared/services/profile.service'
 export class HomeComponent implements OnInit {
   postsArray: any = new Array(3);
   showNewPostIndicator: boolean = false;
-  currentUserId: any = null
+  currentUserId: any = null;
 
   constructor(
     private postService: PostService,
@@ -29,30 +29,31 @@ export class HomeComponent implements OnInit {
     this.loadUser();
 
     this.getNewPostIndicator();
-        this.getCurrentUserId()
+    this.getCurrentUserId();
   }
-
 
   trackPost(index: number, post: any) {
     return post.id;
   }
 
   getCurrentUserId() {
-    this.profileService.getCurrentUserId().subscribe((response: any) => { 
-      this.currentUserId = response.userId
-    }, 
-    (err) => { 
-      console.log(err) 
-    })
+    this.profileService.getCurrentUserId().subscribe(
+      (response: any) => {
+        this.currentUserId = response.userId;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   getNewPostIndicator() {
     this.eventsService.getNewPostIndicator().subscribe((response) => {
-      this.showNewPostIndicator = true
+      this.showNewPostIndicator = true;
 
       // close the new post indicator after some time
       setTimeout(() => {
-        this.showNewPostIndicator = false
+        this.showNewPostIndicator = false;
       }, 10000);
     });
   }
@@ -62,7 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadPosts() {
-    this.showNewPostIndicator = false
+    this.showNewPostIndicator = false;
 
     this.postService.getPosts().subscribe(
       (response: any) => {

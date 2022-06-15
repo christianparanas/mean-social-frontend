@@ -41,7 +41,10 @@
 
   <div class="post_interactions__container">
     <div class="top__container">
-      <div class="post_likes_count__container" *ngIf="postArray.likers.length != 0">
+      <div
+        class="post_likes_count__container"
+        *ngIf="postArray.likers.length != 0"
+      >
         <div class="icons">
           <img src="../../../../../assets/svgs/facebook-like.svg" alt="" />
         </div>
@@ -61,9 +64,12 @@
       </div>
     </div>
     <div class="bottom__container">
-      <div class="container" (click)="reactPost([postArray.id, currentUserId])" [ngClass]="{ isActive: isAlreadyReacted(postArray.likers)}" >
+      <div
+        class="container"
+        (click)="reactPost([postArray.id, currentUserId])"
+      >
         <i class="fal fa-thumbs-up"></i>
-        <p>{{ isAlreadyReacted(postArray.likers) ? "Liked" : "Like" }}</p>
+        <!-- <p>{{ isAlreadyReacted(postArray, currentUserId) ? "Liked" : "Like" }}</p> -->
       </div>
       <div class="container">
         <i class="fal fa-comment-alt"></i>

@@ -3,8 +3,8 @@ import * as moment from 'moment';
 
 import { MenuItem } from 'primeng/api';
 
-import { ProfileService } from '../../shared/services/profile.service'
-import { PostService } from '../../shared/services/post.service'
+import { ProfileService } from '../../shared/services/profile.service';
+import { PostService } from '../../shared/services/post.service';
 
 @Component({
   selector: 'app-postcontainer',
@@ -15,13 +15,15 @@ export class PostcontainerComponent implements OnInit {
   @Input() postArray: any;
   @Output() callParentMeth = new EventEmitter<any>();
   items: MenuItem[];
-  currentUserId: any = null
+  currentUserId: any = null;
 
-  constructor(private profileService: ProfileService, private postService: PostService) {}
+  constructor(
+    private profileService: ProfileService,
+    private postService: PostService
+  ) {}
 
   ngOnInit() {
-    this.getCurrentUserId()
-
+    this.getCurrentUserId();
 
     this.items = [
       {
@@ -40,42 +42,52 @@ export class PostcontainerComponent implements OnInit {
   }
 
   getCurrentUserId() {
-    this.profileService.getCurrentUserId().subscribe((response: any) => { 
-      this.currentUserId = response.userId
-    }, 
-    (err) => { 
-      console.log(err) 
-    })
+    this.profileService.getCurrentUserId().subscribe(
+      (response: any) => {
+        this.currentUserId = response.userId;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   reactPost(postData: any) {
     const data = {
       postId: postData[0],
-      likerId: postData[1]
-    }
+      likerId: postData[1],
+    };
 
     this.postService.reactPost(data).subscribe(
       (response: any) => {
-        console.log(response)
-        this.refreshPosts()
-    },
-    (error: any) => {
-      console.log(error)
-    })
+        console.log(response);
+        this.refreshPosts();
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 
-  isAlreadyReacted(likersArr: any) {
-    let isTrue = false
+  isAlreadyReacted(postArr: any, userId: any) {
+    if(postArr.likers.length == 0) return false
 
-    if(likersArr.length == 0) return false
-    
-    likersArr.map((liker: any) => {
-      if(liker.user.id == this.currentUserId) {
-        isTrue = true
+    this.postService.getPostReactors([postArr.id, userId]).subscribe(
+      (response: any) => {
+        console.log(response)
+      },
+      (error) => {
+        console.log(error)
       }
-    })
+    )
+  }
 
-    return isTrue
+  getPostReactors(postId: any, userId: any) {
+    const data = {
+      postId: postId,
+    };
+
+    
   }
 
   convertPostData(date: any): any {
@@ -83,6 +95,6 @@ export class PostcontainerComponent implements OnInit {
   }
 
   refreshPosts() {
-    this.callParentMeth.emit()
+    this.callParentMeth.emit();
   }
 }

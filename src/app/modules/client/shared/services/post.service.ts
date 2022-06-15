@@ -22,4 +22,8 @@ export class PostService {
   reactPost(data: any) {
     return this.http.post(`${baseURL}/api/posts/react`, data)
   }
+
+  getPostReactors(data: any) {
+    return this.http.post(`${baseURL}/api/posts/reactors`, data)
+  }
 }
